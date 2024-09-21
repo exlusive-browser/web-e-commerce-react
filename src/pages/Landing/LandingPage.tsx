@@ -1,28 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { MainLayout } from "@/layout/MainLayout";
-// import { useLocation, Link } from 'react-router-dom';
-// import {DynamicBreadcrumb} from "@/components/ui/breadcumb1";
 import DynamicBreadcrumb from "@/components/ui/dynamicbreadcrumb";
-// import {
-//   Breadcrumb,
-//   BreadcrumbItem,
-//   BreadcrumbLink,
-//   BreadcrumbList,
-//   BreadcrumbPage,
-//   BreadcrumbSeparator,
-// } from "@/components/ui/breadcrumb"
 
 export function LandingPage() {
   return (
     <MainLayout>
       <DynamicBreadcrumb />
-      {/* <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-          <BreadcrumbPage>Smartphones</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb> */}
 
       <p className="font-title font-bold text-2xl mb-4">My Title</p>
       <p>

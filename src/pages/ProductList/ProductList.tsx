@@ -1,12 +1,4 @@
 import { MainLayout } from "@/layout/MainLayout";
-// import {
-//   Breadcrumb,
-//   BreadcrumbItem,
-//   BreadcrumbLink,
-//   BreadcrumbList,
-//   BreadcrumbPage,
-//   BreadcrumbSeparator,
-// } from "@/components/ui/breadcrumb"
 import DynamicBreadcrumb from "@/components/ui/dynamicbreadcrumb";
 
 export function ProductList() {

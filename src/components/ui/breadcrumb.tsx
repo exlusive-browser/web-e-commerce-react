@@ -52,9 +52,8 @@ const BreadcrumbLink = React.forwardRef<
 >((props, ref) => {
   const { asChild, className, ...restProps } = props;
 
-  // Comprobamos si se trata de un componente Slot o un Link
   if (asChild) {
-    // Si asChild es true, retornamos un Slot
+
     return (
       <Slot
         className={cn("transition-colors hover:text-foreground text-[#3498db]", className)}
@@ -62,12 +61,12 @@ const BreadcrumbLink = React.forwardRef<
       />
     );
   } else {
-    // Si asChild es false, retornamos un Link asegurándonos de que 'to' está presente
+
     return (
       <Link
         ref={ref}
         className={cn("transition-colors hover:text-foreground text-[#3498db]", className)}
-        {...restProps as LinkProps} // Asertamos a LinkProps para asegurar que 'to' esté presente
+        {...restProps as LinkProps}
       />
     );
   }
