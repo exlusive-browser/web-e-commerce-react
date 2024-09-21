@@ -8,13 +8,16 @@ export function ProductList() {
       <DynamicBreadcrumb />
       <div className="flex flex-col px-4 md:flex-row md:px-6">
         {/* Contenedor para los botones en móvil */}
-        <div className="flex justify-between mb-4 md:hidden">
-          <div className="w-1/2 mr-2">
-            <Filters />
+        <div className="mb-4 md:hidden">
+          <div className="flex justify-between mb-4 md:hidden">
+            <div className="w-1/2 mr-2">
+              <Filters />
+            </div>
+            <div className="w-1/2 ml-2">
+              <OrderBy />
+            </div>
           </div>
-          <div className="w-1/2 ml-2">
-            <OrderBy />
-          </div>
+          <p className="font-bold pl-2">10 results in Smartphones</p>
         </div>
 
         {/* Filtros ocupando la columna izquierda en escritorio */}
@@ -24,7 +27,8 @@ export function ProductList() {
 
         <div className="flex-1 p-4">
           <div className="flex flex-col">
-            <div className="hidden md:flex justify-end mb-4">
+            <div className="hidden md:flex justify-between items-center mb-4">
+              <p className="font-bold">10 results in Smartphones</p>
               <OrderBy />
             </div>
             <p className="text-2xl mb-4 break-words">

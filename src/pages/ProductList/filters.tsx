@@ -64,13 +64,15 @@ export function Filters() {
             {isOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 md:hidden">
                     <div className="bg-white p-4 rounded-lg w-11/12 max-w-md max-h-[80vh] overflow-y-auto">
-                        <button
-                            onClick={togglePopup}
-                            className="absolute top-2 right-2 text-gray-600"
-                        >
-                            ✕
-                        </button>
-                        <h3 className="font-title font-bold text-lg mb-2">Filters</h3>
+                        <div className="flex justify-between items-center mb-2">
+                            <h3 className="font-title font-bold text-lg">Filters</h3>
+                            <button
+                                onClick={togglePopup}
+                                className="text-gray-600 focus:outline-none"
+                            >
+                                ✕
+                            </button>
+                        </div>
                         <div className="flex flex-col gap-4">
                             {smartphoneFilters.map((filter) => (
                                 <div key={filter.id}>
