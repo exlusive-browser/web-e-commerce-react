@@ -7,7 +7,6 @@ export function ProductList() {
     <MainLayout>
       <DynamicBreadcrumb />
       <div className="flex flex-col px-4 md:flex-row md:px-6">
-        {/* Contenedor para los botones en móvil */}
         <div className="mb-4 md:hidden">
           <div className="flex justify-between mb-4 md:hidden">
             <div className="w-1/2 mr-2">
@@ -20,7 +19,6 @@ export function ProductList() {
           <p className="font-bold pl-2">10 results in Smartphones</p>
         </div>
 
-        {/* Filtros ocupando la columna izquierda en escritorio */}
         <div className="hidden md:flex md:w-1/6 p-4 rounded-md">
           <Filters />
         </div>
