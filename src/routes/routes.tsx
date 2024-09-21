@@ -9,6 +9,10 @@ export const router = createBrowserRouter([
   },
   {
     path: "/product-list",
+    element: <p>Product List Generic</p>,
+  },
+  {
+    path: "/product-list/:category",
     element: <ProductList />,
   },
 ]);

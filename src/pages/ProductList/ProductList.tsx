@@ -1,8 +1,11 @@
 import { MainLayout } from "@/layout/MainLayout";
+import DynamicBreadcrumb from "@/components/ui/dynamicbreadcrumb";
 
 export function ProductList() {
   return (
     <MainLayout>
+      <DynamicBreadcrumb />
+
       <p>ProductList</p>
       <p className="text-2xl">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore modi
