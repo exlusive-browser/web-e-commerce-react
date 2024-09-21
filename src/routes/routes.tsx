@@ -1,6 +1,6 @@
 import { LandingPage } from "@/pages/Landing/LandingPage";
 import { ProductList } from "@/pages/ProductList/ProductList";
-import TopsellingProducts from "@/pages/Products/TopsellingProducts"; // Asegúrate de que la ruta sea correcta
+import TopsellingProducts from "@/pages/Products/TopsellingProducts"; 
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
@@ -13,7 +13,8 @@ export const router = createBrowserRouter([
     element: <ProductList />,
   },
   {
-    path: "/", // Ruta para TopsellingProducts
+    path: "/", 
     element: <TopsellingProducts />,
   },
+
 ]);
