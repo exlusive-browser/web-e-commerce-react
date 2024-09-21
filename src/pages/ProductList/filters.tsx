@@ -53,8 +53,8 @@ export function Filters() {
     return (
         <div className="flex flex-col">
             {/* Botón para abrir el pop-up (solo en móviles) */}
-            <button 
-                onClick={togglePopup} 
+            <button
+                onClick={togglePopup}
                 className="mb-4 p-2 bg-blue-500 text-white rounded-md h-10 md:hidden"
             >
                 Show Filters
@@ -62,10 +62,10 @@ export function Filters() {
 
             {/* Pop-up de filtros (solo en móviles) */}
             {isOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-start z-50 md:hidden">
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 md:hidden">
                     <div className="bg-white p-4 rounded-lg w-11/12 max-w-md max-h-[80vh] overflow-y-auto">
-                        <button 
-                            onClick={togglePopup} 
+                        <button
+                            onClick={togglePopup}
                             className="absolute top-2 right-2 text-gray-600"
                         >
                             ✕
@@ -78,8 +78,8 @@ export function Filters() {
                                     <div className="flex flex-col gap-2">
                                         {filter.options.map((option) => (
                                             <label key={option} className="flex items-center gap-2">
-                                                <input 
-                                                    type="checkbox" 
+                                                <input
+                                                    type="checkbox"
                                                     className="form-checkbox h-4 w-4 text-blue-600"
                                                 />
                                                 <span className="text-base text-[#656565]">{option}</span>
@@ -93,6 +93,7 @@ export function Filters() {
                 </div>
             )}
 
+
             {/* Vista de escritorio: Filtros directamente visibles */}
             <div className="hidden md:flex flex-col gap-4">
                 {smartphoneFilters.map((filter) => (
@@ -101,8 +102,8 @@ export function Filters() {
                         <div className="flex flex-col gap-2">
                             {filter.options.map((option) => (
                                 <label key={option} className="flex items-center gap-2">
-                                    <input 
-                                        type="checkbox" 
+                                    <input
+                                        type="checkbox"
                                         className="form-checkbox h-4 w-4 text-blue-600"
                                     />
                                     <span className="text-base text-[#656565]">{option}</span>
