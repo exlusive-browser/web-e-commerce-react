@@ -2,6 +2,7 @@ import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { ChevronRight, MoreHorizontal } from "lucide-react"
 
+
 import { cn } from "@/lib/utils"
 
 const Breadcrumb = React.forwardRef<
@@ -39,23 +40,41 @@ const BreadcrumbItem = React.forwardRef<
 ))
 BreadcrumbItem.displayName = "BreadcrumbItem"
 
+// import { Link } from 'react-router-dom';
+import { Link, LinkProps } from "react-router-dom";
+
+
 const BreadcrumbLink = React.forwardRef<
   HTMLAnchorElement,
-  React.ComponentPropsWithoutRef<"a"> & {
-    asChild?: boolean
+  React.ComponentPropsWithoutRef<"a"> & Partial<LinkProps> & {
+    asChild?: boolean;
   }
->(({ asChild, className, ...props }, ref) => {
-  const Comp = asChild ? Slot : "a"
+>((props, ref) => {
+  const { asChild, className, ...restProps } = props;
 
-  return (
-    <Comp
-      ref={ref}
-      className={cn("transition-colors hover:text-foreground", className)}
-      {...props}
-    />
-  )
-})
-BreadcrumbLink.displayName = "BreadcrumbLink"
+  // Comprobamos si se trata de un componente Slot o un Link
+  if (asChild) {
+    // Si asChild es true, retornamos un Slot
+    return (
+      <Slot
+        className={cn("transition-colors hover:text-foreground text-[#3498db]", className)}
+        {...restProps}
+      />
+    );
+  } else {
+    // Si asChild es false, retornamos un Link asegurándonos de que 'to' está presente
+    return (
+      <Link
+        ref={ref}
+        className={cn("transition-colors hover:text-foreground text-[#3498db]", className)}
+        {...restProps as LinkProps} // Asertamos a LinkProps para asegurar que 'to' esté presente
+      />
+    );
+  }
+});
+
+BreadcrumbLink.displayName = "BreadcrumbLink";
+
 
 const BreadcrumbPage = React.forwardRef<
   HTMLSpanElement,
