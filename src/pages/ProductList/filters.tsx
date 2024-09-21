@@ -55,15 +55,15 @@ export function Filters() {
             {/* Botón para abrir el pop-up (solo en móviles) */}
             <button 
                 onClick={togglePopup} 
-                className="mb-4 p-2 bg-blue-500 text-white rounded-md md:hidden"
+                className="mb-4 p-2 bg-blue-500 text-white rounded-md h-10 md:hidden"
             >
                 Show Filters
             </button>
 
             {/* Pop-up de filtros (solo en móviles) */}
             {isOpen && (
-                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 md:hidden">
-                    <div className="bg-white p-4 rounded-lg w-11/12 max-w-md transform transition-transform duration-300">
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-start z-50 md:hidden">
+                    <div className="bg-white p-4 rounded-lg w-11/12 max-w-md max-h-[80vh] overflow-y-auto">
                         <button 
                             onClick={togglePopup} 
                             className="absolute top-2 right-2 text-gray-600"
@@ -71,7 +71,7 @@ export function Filters() {
                             ✕
                         </button>
                         <h3 className="font-title font-bold text-lg mb-2">Filters</h3>
-                        <div className="flex flex-col gap-4 overflow-y-auto max-h-[80vh]">
+                        <div className="flex flex-col gap-4">
                             {smartphoneFilters.map((filter) => (
                                 <div key={filter.id}>
                                     <p className="font-bold">{filter.name}</p>
