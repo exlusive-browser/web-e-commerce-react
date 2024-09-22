@@ -22,7 +22,7 @@ const NavBar: React.FC<NavBarBarProps> = ({ menuItems }) => {
   };
   return (
     <div
-      className="bg-gray-800 text-white p-4  z-10"
+      className=" bg-white text-black p-4  z-10"
       onMouseLeave={handleMouseLeave}
     >
       <div className="container mx-auto flex justify-start items-center ">
