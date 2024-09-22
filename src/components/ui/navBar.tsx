@@ -32,7 +32,7 @@ const NavBar: React.FC<NavBarBarProps> = ({ menuItems }) => {
             className="relative"
             onMouseEnter={() => handleMouseEnter(index)}
           >
-            <button className="px-4 py-2 hover:bg-gray-700 rounded">
+            <button className="px-4 py-2 hover:bg-gray-100 rounded">
               {item.title}
             </button>
             {activeIndex === index && (
