@@ -22,7 +22,7 @@ const AdBanner: React.FC<AdBannerProps> = ({ items }) => {
   };
 
   return (
-    <div className="flex w-full h-full justify-center  text-white p-5 rounded-md  ">
+    <div className="flex w-full h[auto] justify-center  text-white p-5 rounded-md  ">
 
       <div
         className="cursor-pointer transition-transform transform hover:scale-105"
@@ -30,7 +30,7 @@ const AdBanner: React.FC<AdBannerProps> = ({ items }) => {
       >
         <img
           src={items[currentIndex].image}
-          className=" h-[60vh]  rounded-lg shadow-md"
+          className="   object-scale-down"
           alt={`Ad ${currentIndex}`}
         />
       </div>
