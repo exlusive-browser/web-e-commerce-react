@@ -34,7 +34,7 @@ export function ProductList() {
           <p className="font-bold pl-2">10 results in Smartphones</p>
         </div>
 
-        <div className="hidden md:flex md:w-1/6 p-4 rounded-md">
+        <div className="hidden md:flex md:w-1/5 p-4 rounded-md">
           <Filters />
         </div>
 

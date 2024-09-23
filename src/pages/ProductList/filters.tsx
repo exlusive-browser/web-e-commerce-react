@@ -4,44 +4,40 @@ const smartphoneFilters = [
     {
         id: 1,
         name: "Brand",
-        options: ["Apple", "Samsung", "Xiaomi", "OnePlus", "Google"],
+        options: ["Apple (18)", "Samsung (25)", "Xiaomi (12)", "OnePlus (9)", "Google (15)"],
     },
     {
         id: 2,
         name: "Operating System",
-        options: ["iOS", "Android"],
+        options: ["iOS (18)", "Android (61)"],
     },
     {
         id: 3,
         name: "Storage Capacity",
-        options: ["64GB", "128GB", "256GB", "512GB", "1TB"],
+        options: ["64GB (10)", "128GB (24)", "256GB (20)", "512GB (15)", "1TB (10)"],
     },
     {
         id: 4,
         name: "RAM",
-        options: ["4GB", "6GB", "8GB", "12GB"],
+        options: ["4GB (8)", "6GB (15)", "8GB (30)", "12GB (26)"],
     },
     {
         id: 5,
         name: "Battery Capacity",
-        options: ["< 3000mAh", "3000 - 4000mAh", "4000 - 5000mAh", "> 5000mAh"],
+        options: ["< 3000mAh (5)", "3000 - 4000mAh (18)", "4000 - 5000mAh (35)", "> 5000mAh (21)"],
     },
     {
         id: 6,
         name: "Price Range",
-        options: [
-            "$500,000 - $1,000,000",
-            "$1,000,000 - $2,000,000",
-            "$2,000,000 - $3,000,000",
-            "$3,000,000+",
-        ],
+        options: ["$500,000 - $1,000,000 (10)", "$1,000,000 - $2,000,000 (20)", "$2,000,000 - $3,000,000 (15)", "$3,000,000+ (34)"],
     },
     {
         id: 7,
         name: "Color",
-        options: ["Black", "White", "Silver", "Blue", "Red", "Gold"],
+        options: ["Black (22)", "White (19)", "Silver (11)", "Blue (15)", "Red (8)", "Gold (14)"],
     },
 ];
+
 
 export function Filters() {
     const [isOpen, setIsOpen] = useState(false);
