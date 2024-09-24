@@ -4,7 +4,7 @@ interface PromtionalProps {
   item: { image: string; link: string };
 }
 
-const PromotionalImages: React.FC<PromtionalProps> = ({ item }) => {
+export const PromotionalImages: React.FC<PromtionalProps> = ({ item }) => {
   const handleClick = (link: string) => {
     window.open(link, "_blank"); // Abre el link en una nueva pestaña
   };
@@ -19,5 +19,3 @@ const PromotionalImages: React.FC<PromtionalProps> = ({ item }) => {
     </div>
   );
 };
-
-export default PromotionalImages;

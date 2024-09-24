@@ -5,8 +5,7 @@ interface AdBannerProps {
   items: { image: string; link: string }[];
 }
 
-const AdBanner: React.FC<AdBannerProps> = ({ items }) => {
-  
+export const AdBanner: React.FC<AdBannerProps> = ({ items }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -23,7 +22,6 @@ const AdBanner: React.FC<AdBannerProps> = ({ items }) => {
 
   return (
     <div className="flex w-full h[auto] justify-center  text-white p-5 rounded-md  ">
-
       <div
         className="cursor-pointer transition-transform transform hover:scale-105"
         onClick={() => handleClick(items[currentIndex].link)}
@@ -34,9 +32,6 @@ const AdBanner: React.FC<AdBannerProps> = ({ items }) => {
           alt={`Ad ${currentIndex}`}
         />
       </div>
-
     </div>
   );
 };
-
-export default AdBanner;
