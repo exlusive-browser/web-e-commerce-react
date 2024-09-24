@@ -1,11 +1,24 @@
 import * as React from "react";
 import { NavBar } from "./NavBar";
 import { LateralNavBar } from "./LateralNavBar";
+import { useQuery } from "@tanstack/react-query";
+import { categoryRepository } from "@/repositores/repository.factory";
+import { Category } from "@/entities/category";
 
 interface SubHeaderProps {
   open: boolean;
   onHambugerClick?: () => void;
 }
+
+const categoryToMenuItem = (category: Category) => {
+  return {
+    title: category.title,
+    links: category.subCategories.map((subCategory) => ({
+      label: subCategory.title,
+      url: subCategory.url,
+    })),
+  };
+};
 
 export const SubHeader: React.FC<SubHeaderProps> = ({
   open,
@@ -27,44 +40,14 @@ export const SubHeader: React.FC<SubHeaderProps> = ({
     };
   }, []);
 
-  const menuItems = [
-    {
-      title: "Technology",
-      links: [
-        { label: "Computers", url: "/" },
-        { label: "Televisions", url: "/" },
-        { label: "Audio", url: "/" },
-        { label: "Video", url: "/" },
-        { label: "Printing", url: "/" },
-        { label: "Cameras", url: "/" },
-      ],
-    },
-    {
-      title: "Appliances",
-      links: [
-        { label: "Air Conditioning", url: "/" },
-        { label: "Refrigeration", url: "/" },
-        { label: "Washers/Dryers", url: "/" },
-      ],
-    },
-    {
-      title: "Smartphones",
-      links: [
-        { label: "Smartphones", url: "/product-list/smartphones" },
-        { label: "Tablets", url: "/" },
-        { label: "Smartwatch", url: "/" },
-      ],
-    },
-    {
-      title: "Home",
-      links: [
-        { label: "Living Rooms", url: "/" },
-        { label: "Dining Room", url: "/" },
-        { label: "Kitchen", url: "/" },
-        { label: "Bathroom", url: "/" },
-      ],
-    },
-  ];
+  // TODO: handle loading and error states
+
+  const { isLoading, isError, data, error } = useQuery<Category[]>({
+    queryKey: ["categories"],
+    queryFn: categoryRepository.getMany,
+  });
+
+  const menuItems = data !== undefined ? data.map(categoryToMenuItem) : [];
 
   return (
     <>
