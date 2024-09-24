@@ -1,6 +1,6 @@
 import { MainLayout } from "@/layout/MainLayout";
 import DynamicBreadcrumb from "@/components/ui/dynamicbreadcrumb";
-import TopsellingProducts from "../Products/TopsellingProducts";
+import { TopsellingProducts } from "./TopsellingProducts";
 import sale1 from "@/assets/images/sale1.png";
 import sale2 from "@/assets/images/sale2.png";
 import sale3 from "@/assets/images/sale3.png";

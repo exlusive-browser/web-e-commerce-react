@@ -1,8 +1,6 @@
 import { MainLayout } from "@/layout/MainLayout";
 import DynamicBreadcrumb from "@/components/ui/dynamicbreadcrumb";
-import { Filters } from "./filters";
-import { OrderBy } from "./orderby";
-import ProductCard from "./components/ProductCard";
+import { ProductCard } from "./components/ProductCard";
 
 import product1Image from "@/assets/images/product1.png";
 import product11Image from "@/assets/images/product11.png";
@@ -16,6 +14,8 @@ import product12Image from "@/assets/images/product12.png";
 import product10HoverImage from "@/assets/images/product10-hover.png";
 import product2HoverImage from "@/assets/images/product2-hover.png";
 import product9HoverImage from "@/assets/images/product9-hover.png";
+import { FilterSection } from "./FilterSection";
+import { OrderSection } from "./OrderSection";
 
 export function ProductList() {
   return (
@@ -25,22 +25,24 @@ export function ProductList() {
         <div className="mb-4 md:hidden">
           <div className="flex justify-between mb-4 md:hidden">
             <div className="w-1/2 mr-2">
-              <Filters />
+              <FilterSection />
             </div>
             <div className="w-1/2 ml-2">
-              <OrderBy />
+              <OrderSection />
             </div>
           </div>
           <p className="font-bold pl-2">10 results in Smartphones</p>
         </div>
 
         <div className="hidden md:flex md:w-1/5 p-4 rounded-md">
-          <Filters />
+          <FilterSection />
         </div>
 
         <div className="flex-1 p-4 md:w-2/3">
           <div className="flex flex-col">
-            <p className="hidden md:block font-bold mb-5 text-lg">10 results in Smartphones</p>
+            <p className="hidden md:block font-bold mb-5 text-lg">
+              10 results in Smartphones
+            </p>
             <ProductCard
               products={[
                 {
@@ -48,7 +50,8 @@ export function ProductList() {
                   rating: 4,
                   price: 5899000,
                   discount: 17,
-                  description: "Premium smartphone with a sleek titanium finish, 256 GB storage, and advanced camera features for a superior mobile experience.",
+                  description:
+                    "Premium smartphone with a sleek titanium finish, 256 GB storage, and advanced camera features for a superior mobile experience.",
                   img: product1Image,
                 },
                 {
@@ -56,7 +59,8 @@ export function ProductList() {
                   rating: 5,
                   price: 6869000,
                   discount: 25,
-                  description: "Large-screen LTE tablet with 128 GB storage and 8 GB RAM, perfect for productivity and entertainment on the go.",
+                  description:
+                    "Large-screen LTE tablet with 128 GB storage and 8 GB RAM, perfect for productivity and entertainment on the go.",
                   img: product7Image,
                 },
                 {
@@ -64,7 +68,8 @@ export function ProductList() {
                   rating: 4,
                   price: 1999900,
                   discount: 55,
-                  description: "High-performance smartphone with 256 GB storage, 8 GB RAM, and a sleek green finish for power users.",
+                  description:
+                    "High-performance smartphone with 256 GB storage, 8 GB RAM, and a sleek green finish for power users.",
                   img: product5Image,
                 },
                 {
@@ -72,7 +77,8 @@ export function ProductList() {
                   rating: 4,
                   price: 3999900,
                   discount: 33,
-                  description: "Large-screen tablet with 128 GB storage and 6 GB RAM, designed for multimedia and productivity.",
+                  description:
+                    "Large-screen tablet with 128 GB storage and 6 GB RAM, designed for multimedia and productivity.",
                   img: product3Image,
                 },
                 {
@@ -80,7 +86,8 @@ export function ProductList() {
                   rating: 5,
                   price: 4139010,
                   discount: 10,
-                  description: "Sleek iPhone 15 in a vibrant pink color, with 128 GB storage for all your apps and media.",
+                  description:
+                    "Sleek iPhone 15 in a vibrant pink color, with 128 GB storage for all your apps and media.",
                   img: product4Image,
                 },
                 {
@@ -88,7 +95,8 @@ export function ProductList() {
                   rating: 5,
                   price: 759000,
                   discount: 45,
-                  description: "Affordable yet powerful smartphone with 128 GB storage and 8 GB RAM for smooth multitasking.",
+                  description:
+                    "Affordable yet powerful smartphone with 128 GB storage and 8 GB RAM for smooth multitasking.",
                   img: product2HoverImage,
                 },
                 {
@@ -96,7 +104,8 @@ export function ProductList() {
                   rating: 5,
                   price: 949000,
                   discount: 53,
-                  description: "Compact tablet with 64 GB storage and 4 GB RAM, ideal for entertainment and light productivity.",
+                  description:
+                    "Compact tablet with 64 GB storage and 4 GB RAM, ideal for entertainment and light productivity.",
                   img: product6Image,
                 },
                 {
@@ -104,7 +113,8 @@ export function ProductList() {
                   rating: 4,
                   price: 4799900,
                   discount: 31,
-                  description: "Advanced smartwatch with 49mm titanium build, designed for durability and performance tracking.",
+                  description:
+                    "Advanced smartwatch with 49mm titanium build, designed for durability and performance tracking.",
                   img: product10HoverImage,
                 },
                 {
@@ -112,7 +122,8 @@ export function ProductList() {
                   rating: 4,
                   price: 2998000,
                   discount: 31,
-                  description: "Compact iPad Mini with 64 GB storage, perfect for portability without compromising on performance.",
+                  description:
+                    "Compact iPad Mini with 64 GB storage, perfect for portability without compromising on performance.",
                   img: product9HoverImage,
                 },
                 {
@@ -120,7 +131,8 @@ export function ProductList() {
                   rating: 4,
                   price: 515000,
                   discount: 10,
-                  description: "Stylish and functional smartwatch with a sleek design and essential health-tracking features.",
+                  description:
+                    "Stylish and functional smartwatch with a sleek design and essential health-tracking features.",
                   img: product8Image,
                 },
                 {
@@ -128,7 +140,8 @@ export function ProductList() {
                   rating: 4,
                   price: 2099900,
                   discount: 34,
-                  description: "High-performance smartphone with 5G connectivity, 256 GB storage, and 8 GB RAM for seamless multitasking.",
+                  description:
+                    "High-performance smartphone with 5G connectivity, 256 GB storage, and 8 GB RAM for seamless multitasking.",
                   img: product11Image,
                 },
                 {
@@ -136,16 +149,17 @@ export function ProductList() {
                   rating: 4,
                   price: 3699900,
                   discount: 28,
-                  description: "Flagship smartphone with 256 GB storage, 8 GB RAM, and a stunning gray finish, built for power users.",
+                  description:
+                    "Flagship smartphone with 256 GB storage, 8 GB RAM, and a stunning gray finish, built for power users.",
                   img: product12Image,
                 },
-              ]} />
-
+              ]}
+            />
           </div>
         </div>
 
         <div className="hidden md:col md:block justify-between items-center mb-4">
-          <OrderBy />
+          <OrderSection />
         </div>
       </div>
     </MainLayout>

@@ -25,7 +25,7 @@ import product8HoverImage from "@/assets/images/product8-hover.png";
 import product9HoverImage from "@/assets/images/product9-hover.png";
 import product12HoverImage from "@/assets/images/product12-hover.png";
 
-const TopsellingProducts: React.FC = () => {
+export const TopsellingProducts: React.FC = () => {
   const products = [
     {
       id: 1,
@@ -260,5 +260,3 @@ const TopsellingProducts: React.FC = () => {
     </div>
   );
 };
-
-export default TopsellingProducts;
