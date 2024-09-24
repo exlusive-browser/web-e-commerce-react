@@ -1,6 +1,6 @@
 import * as React from "react";
-import { NavBar } from "./navBar";
-import { LateralNavBar } from "./lateralNavBar";
+import { NavBar } from "./NavBar";
+import { LateralNavBar } from "./LateralNavBar";
 
 interface SubHeaderProps {
   open: boolean;
