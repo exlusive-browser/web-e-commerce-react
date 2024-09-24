@@ -1,20 +1,17 @@
 import { MainLayout } from "@/layout/MainLayout";
 import DynamicBreadcrumb from "@/components/ui/dynamicbreadcrumb";
 import { TopsellingProducts } from "./TopsellingProducts";
-import sale1 from "@/assets/images/sale1.png";
-import sale2 from "@/assets/images/sale2.png";
-import sale3 from "@/assets/images/sale3.png";
-import sale4 from "@/assets/images/sale4.png";
 import { AdBanner } from "./LandingAdBanner";
 import { PromotionalImages } from "./LandingPromotionalmages";
+import { importAsset, importImage } from "@/lib/image-utils";
 
 const items = [
   {
-    image: sale1,
+    image: importAsset("images", "sale1.png"),
     link: "/",
   },
   {
-    image: sale2,
+    image: importAsset("images", "sale2.png"),
     link: "/",
   },
 ];
@@ -24,9 +21,13 @@ export function LandingPage() {
     <MainLayout>
       <DynamicBreadcrumb />
       <AdBanner items={items} />
-      <PromotionalImages item={{ image: sale3, link: "/" }} />
+      <PromotionalImages
+        item={{ image: importImage("sale3.png"), link: "/" }}
+      />
       <TopsellingProducts />
-      <PromotionalImages item={{ image: sale4, link: "/" }} />
+      <PromotionalImages
+        item={{ image: importImage("sale4.png"), link: "/" }}
+      />
     </MainLayout>
   );
 }
