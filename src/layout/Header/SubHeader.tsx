@@ -1,12 +1,16 @@
 import * as React from "react";
-import NavBar from "@/components/ui/navBar";
-import LateralNavBar from "@/components/ui/lateralNavBar";
+import { NavBar } from "./navBar";
+import { LateralNavBar } from "./lateralNavBar";
+
 interface SubHeaderProps {
   open: boolean;
   onHambugerClick?: () => void;
 }
 
-const SubHeader: React.FC<SubHeaderProps> = ({ open, onHambugerClick }) => {
+export const SubHeader: React.FC<SubHeaderProps> = ({
+  open,
+  onHambugerClick,
+}) => {
   const [isSmallScreen, setIsSmallScreen] = React.useState<boolean>(false);
 
   const handleResize = () => {
@@ -74,5 +78,3 @@ const SubHeader: React.FC<SubHeaderProps> = ({ open, onHambugerClick }) => {
     </>
   );
 };
-
-export default SubHeader;

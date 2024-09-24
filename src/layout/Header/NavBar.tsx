@@ -10,7 +10,7 @@ interface NavBarBarProps {
   menuItems: MenuItem[];
 }
 
-const NavBar: React.FC<NavBarBarProps> = ({ menuItems }) => {
+export const NavBar: React.FC<NavBarBarProps> = ({ menuItems }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const handleMouseEnter = (index: number) => {
@@ -52,5 +52,3 @@ const NavBar: React.FC<NavBarBarProps> = ({ menuItems }) => {
     </div>
   );
 };
-
-export default NavBar;

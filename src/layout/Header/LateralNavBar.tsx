@@ -13,7 +13,7 @@ interface LateralNavBarProps {
   onHambugerClick?: () => void;
 }
 
-const LateralNavBar: React.FC<LateralNavBarProps> = ({
+export const LateralNavBar: React.FC<LateralNavBarProps> = ({
   menuItems,
   onHambugerClick,
 }) => {
@@ -55,5 +55,3 @@ const LateralNavBar: React.FC<LateralNavBarProps> = ({
     </div>
   );
 };
-
-export default LateralNavBar;
