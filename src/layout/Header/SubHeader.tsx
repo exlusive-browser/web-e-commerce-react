@@ -2,8 +2,8 @@ import * as React from "react";
 import { NavBar } from "./NavBar";
 import { LateralNavBar } from "./LateralNavBar";
 import { useQuery } from "@tanstack/react-query";
-import { categoryRepository } from "@/repositores/repository.factory";
 import { Category } from "@/entities/category";
+import { getCategories } from "@/repositores/category.repository";
 
 interface SubHeaderProps {
   open: boolean;
@@ -44,7 +44,7 @@ export const SubHeader: React.FC<SubHeaderProps> = ({
 
   const { isLoading, isError, data, error } = useQuery<Category[]>({
     queryKey: ["categories"],
-    queryFn: categoryRepository.getMany,
+    queryFn: getCategories,
   });
 
   const menuItems = data !== undefined ? data.map(categoryToMenuItem) : [];
