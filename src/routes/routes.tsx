@@ -1,5 +1,7 @@
 import { LandingPage } from "@/pages/Landing/LandingPage";
 import { ProductList } from "@/pages/ProductList/ProductList";
+import { ProductDescription } from "@/pages/ProductDescription/ProductDescription";
+
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
@@ -15,5 +17,8 @@ export const router = createBrowserRouter([
     path: "/product-list/:category",
     element: <ProductList />,
   },
-  
+  {
+    path: "/product/:id",
+    element: <ProductDescription />,
+  }
 ]);
