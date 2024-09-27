@@ -25,6 +25,10 @@ import product8HoverImage from "@/assets/images/product8-hover.png";
 import product9HoverImage from "@/assets/images/product9-hover.png";
 import product12HoverImage from "@/assets/images/product12-hover.png";
 
+function convertSpacesToHyphens(text: string) {
+  return text.replace(/\s+/g, "-");
+}
+
 export const TopsellingProducts: React.FC = () => {
   const products = [
     {
@@ -115,7 +119,7 @@ export const TopsellingProducts: React.FC = () => {
       id: 8,
       image: product8Image,
       hoverImage: product8HoverImage,
-      title: "APPLE Watch Ultra 2 49mm Titanium Blue MREG3BE/A",
+      title: "APPLE Watch Ultra 2 49mm Titanium Blue",
       brand: "APPLE",
       discount: "-31%",
       originalPrice: "$4.799.900",
@@ -186,7 +190,7 @@ export const TopsellingProducts: React.FC = () => {
             className="bg-white border border-gray-300 rounded-lg shadow-md p-4 flex flex-col justify-between transition-transform transform hover:scale-105"
             key={product.id}
           >
-            <Link to={`/product/${product.id}`} className="flex-1">
+            <Link to={`/product/${product.id}/${convertSpacesToHyphens(product.title)}`} className="flex-1">
               <div className="relative w-full h-52 overflow-hidden rounded-lg mb-3">
                 <img
                   src={product.image}
