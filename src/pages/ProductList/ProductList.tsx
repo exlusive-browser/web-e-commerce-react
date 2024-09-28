@@ -1,6 +1,8 @@
 import { MainLayout } from "@/layout/MainLayout";
 import DynamicBreadcrumb from "@/components/ui/dynamicbreadcrumb";
 import { ProductCard } from "./components/ProductCard";
+import { PromotionalImages } from "@/pages/Landing/LandingPromotionalmages";
+import { importImage } from "@/lib/image-utils";
 
 import product1Image from "@/assets/images/product1.png";
 import product11Image from "@/assets/images/product11.png";
@@ -166,6 +168,10 @@ export function ProductList() {
           <OrderSection />
         </div>
       </div>
+      <PromotionalImages
+        item={{ image: importImage("plp-ad.jpg"), link: "/" }}
+      />
+
     </MainLayout>
   );
 }
