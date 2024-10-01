@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { ProductCard } from './ProductCard'; // Asegúrate de que la ruta sea correcta
+import { ProductCard } from './ProductCard'; 
 import ErrorMessage from './ErrorMessage';
 import SkeletonCard from './SkeletonCard';
 
-// Custom hook to fetch products
+
 const useFeaturedProducts = () => {
   return useQuery({
     queryKey: ["featuredProducts"],
@@ -14,12 +14,12 @@ const useFeaturedProducts = () => {
       const { data } = await axios.get("https://uninorte-web-ecommerce.inevaup.workers.dev/products?category=smartphones"); // Insert your API URL here
       return data;
     },
-    retry: 2, // Number of retry attempts if the API fails
+    retry: 2, 
     refetchOnWindowFocus: false,
   });
 };
 
-export const TopsellingProducts: React.FC = () => { // Cambiar a exportación nombrada
+export const TopsellingProducts: React.FC = () => { 
   const { data, error, isLoading } = useFeaturedProducts();
 
   if (isLoading) {
@@ -39,7 +39,7 @@ export const TopsellingProducts: React.FC = () => { // Cambiar a exportación no
     return <ErrorMessage />;
   }
 
-  // Verify if data is an array before using .map
+
   if (!Array.isArray(data)) {
     return <ErrorMessage />;
   }
