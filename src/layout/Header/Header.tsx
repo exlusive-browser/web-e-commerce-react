@@ -47,7 +47,7 @@ export function Header({ onHambugerClick }: HeaderProps) {
           </a>
         </Button>
         <Button asChild variant="link" className="text-foreground">
-          <a href="/cart">
+          <a href="/shopping-cart">
             <img src={cartIcon} alt="Cart" className="h-6 w-5 mr-0 lg:mr-2" />
             <span className="hidden lg:block">Cart</span>
           </a>
