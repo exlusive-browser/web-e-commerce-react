@@ -38,6 +38,7 @@ export const TopsellingProducts: React.FC = () => {
       price: "$4.869.600",
       seller: "iShop",
       rating: "4.3 ★ (3 reviews)",
+      category: "smartphones",
     },
     {
       id: 2,
@@ -50,6 +51,7 @@ export const TopsellingProducts: React.FC = () => {
       price: "$5.151.750",
       seller: "e-commerce",
       rating: "4.8 ★ (2 reviews)",
+      category: "smartphones",
     },
     {
       id: 3,
@@ -62,6 +64,7 @@ export const TopsellingProducts: React.FC = () => {
       price: "$1.029.000",
       seller: "XIAOMI",
       rating: "4.3 ★ (27 reviews)",
+      category: "smartphones",
     },
     {
       id: 4,
@@ -74,6 +77,7 @@ export const TopsellingProducts: React.FC = () => {
       price: "$2.679.900",
       seller: "Twido",
       rating: "4.1 ★ (14 reviews)",
+      category: "smartphones",
     },
     {
       id: 5,
@@ -86,6 +90,7 @@ export const TopsellingProducts: React.FC = () => {
       price: "$4.097.620",
       seller: "Mac Center",
       rating: "4.8 ★ (4 reviews)",
+      category: "smartphones",
     },
     {
       id: 6,
@@ -98,6 +103,7 @@ export const TopsellingProducts: React.FC = () => {
       price: "$415.000",
       seller: "MOTOROLAs",
       rating: "5 ★ (5 reviews)",
+      category: "smartphones",
     },
     {
       id: 7,
@@ -110,6 +116,7 @@ export const TopsellingProducts: React.FC = () => {
       price: "$446.030",
       seller: "TechnoShop",
       rating: "4.6 ★ (11 reviews)",
+      category: "smartphones",
     },
     {
       id: 8,
@@ -186,7 +193,7 @@ export const TopsellingProducts: React.FC = () => {
             className="bg-white border border-gray-300 rounded-lg shadow-md p-4 flex flex-col justify-between transition-transform transform hover:scale-105"
             key={product.id}
           >
-            <Link to={`/product/${product.id}`} className="flex-1">
+            <Link to={`/products/${product.id}`} className="flex-1">
               <div className="relative w-full h-52 overflow-hidden rounded-lg mb-3">
                 <img
                   src={product.image}

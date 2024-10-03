@@ -1,11 +1,13 @@
 import { ProductDetail } from "./ProductDetail";
 import { MainLayout } from "@/layout/MainLayout";
+import { useParams } from "react-router-dom";
+
 
 export function ProductDescription() {
-    const productId = 5;
+    const { id } = useParams();
     return (
         <MainLayout>
-            <ProductDetail id={productId} />
+            <ProductDetail id={Number(id)} />
         </MainLayout>
     );
 }

@@ -1,70 +1,56 @@
 import { useQuery } from "@tanstack/react-query";
 import { Product } from "@/entities/Product";
 import { getProductById } from "@/repositores/product.repository";
-import { importImage } from "./Images";
-import Image4 from "@/assets/images/product4.png";
-import Image4Hover from "@/assets/images/product4-hover.png";
+import { importImage } from "@/lib/image-utils";
+import { Spinner } from "@/components/ui/spinner";
+
+
+
 interface ProductDetailProps {
     id: number;
-}
-
-const ProductDesc = async (product: Product) => {
-    const image = await importImage(product.image);
-    const hoverImage = await importImage(product.hoverImage);
-
-    return {
-        title: product.title,
-        image,
-        hoverImage,
-        originalPrice: product.originalPrice,
-        price: product.price,
-        description: product.description,
-    };
-};
+}                
 
 export const ProductDetail: React.FC<ProductDetailProps> = ({ id }) => {
     const { isLoading, isError, data, error } = useQuery<Product, Error>({
         queryKey: ["product", id],
         queryFn: () => getProductById(id),
     });
-
-    const { data: productInfo, isLoading: isProductDescLoading, isError: isProductDescError } = useQuery({
-        queryKey: ["productDesc", data],
-        queryFn: () => ProductDesc(data!),
-        enabled: !!data, // Solo ejecuta esta query si `data` es no nulo
-    });
-
-    if (isLoading || isProductDescLoading) {
-        return <div className="text-center">Loading...</div>;
+    
+    if (data) {
+        console.log(importImage(data.image));
     }
 
-    if (isError || isProductDescError) {
+    if (isLoading) {
+        return <Spinner size="large"/>;
+    }
+
+    if (isError) {
         return <div className="text-center text-red-500">Error: {error?.message || "Failed to load product details"}</div>;
     }
 
-    if (!productInfo) {
+    if (!data) {
         return <div className="text-center">Product not found.</div>;
     }
 
     return (
         <div>
             <section className="product-desc2 p-6 bg-white shadow-md rounded-md" id="product-desc2">
-                <h1 className="text-3xl font-bold mb-4">{productInfo.title}</h1>
+                <h1 className="text-3xl font-bold mb-4">{data.title}</h1>
                 <div className="container-sec1 flex flex-col md:flex-row gap-6">
                     <div className="image-container flex-1">
                         <img
-                            src={Image4}
-                            alt={productInfo.title}
+                            src={importImage(data.image)}
+                            alt={data.title}
                             className="product-image w-full h-auto max-h-96 object-contain rounded-lg transition-transform duration-300 ease-in-out"
-                            onMouseOver={(e) => (e.currentTarget.src = Image4Hover)}
-                            onMouseOut={(e) => (e.currentTarget.src = Image4)}
+                            onMouseOver={(e) => (e.currentTarget.src = importImage(data.image))}
+                            onMouseOut={(e) => (e.currentTarget.src = importImage(data.hoverImage))}
                         />
                     </div>
                     <div className="desc-container flex-1">
                         <h3 className="text-lg font-bold mb-2">Product Description</h3>
-                        <p className="text-gray-700 text-justify mb-4">{productInfo.description}</p>
-                        <h2 className="text-xl font-bold text-black-600 mb-1">{productInfo.originalPrice}</h2>
-                        <h2 className="text-lg text-gray-500 line-through">{productInfo.price}</h2>
+                        <p className="text-gray-700 text-justify mb-4">{data.description}</p>
+                        <h2 className="text-xl font-bold text-black-600 mb-1">{data.originalPrice}</h2>
+                        <h2 className="text-lg text-gray-500 line-through">{data.price}</h2>
                         <div className="flex items-center gap-4">
                             <div className="quantity-selector">
                                 <select id="quantity" className="quantity-dropdown border rounded-md p-2">
