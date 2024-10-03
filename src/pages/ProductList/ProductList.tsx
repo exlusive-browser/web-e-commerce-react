@@ -1,6 +1,6 @@
 import { MainLayout } from "@/layout/MainLayout";
 import DynamicBreadcrumb from "@/components/ui/dynamicbreadcrumb";
-import { ProductCard } from "./components/ProductCard";
+import { ProductListCard } from "./components/ProductListCard";
 import { PromotionalImages } from "@/pages/Landing/LandingPromotionalmages";
 import { importImage } from "@/lib/image-utils";
 
@@ -45,7 +45,7 @@ export function ProductList() {
             <p className="hidden md:block font-bold mb-5 text-lg">
               10 results in Smartphones
             </p>
-            <ProductCard
+            <ProductListCard
               products={[
                 {
                   name: "iPhone 15 Pro Max 256 GB Natural Titanium",
