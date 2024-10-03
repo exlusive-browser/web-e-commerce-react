@@ -41,7 +41,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ id }) => {
     return (
         <section className="product-desc2 px-6 md:px-24 bg-white shadow-md rounded-md" id="product-desc2">
             <h1 className="text-2xl font-bold mb-4 text-[#333] py-6">{data.title}</h1>
-            <div className="container-sec1 flex flex-col md:flex-row gap-6">
+            <div className="container-sec1 flex flex-col xl:flex-row gap-6">
                 <div className="flex flex-1 justify-center items-center">
                     <Carousel className="w-full max-w-md">
                         <CarouselContent>
@@ -50,7 +50,11 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ id }) => {
                                     <div className="p-1">
                                         <Card>
                                             <CardContent className="flex aspect-square items-center justify-center">
-                                                <img src={image} alt={`Slide ${index + 1}`} className="w-full h-full object-cover rounded-md" />
+                                                <img
+                                                    src={image}
+                                                    alt={`Slide ${index + 1}`}
+                                                    className="h-80 object-contain rounded-md max-h-full" // Solo usando Tailwind CSS
+                                                />
                                             </CardContent>
                                         </Card>
                                     </div>
@@ -58,11 +62,13 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ id }) => {
                             ))}
                         </CarouselContent>
                         <div className="flex justify-between items-center w-full mt-2"> {/* Ajustar la posición de los botones */}
-                            <div className="flex flex-1 justify-start md:justify-start">
-                                <CarouselPrevious className="text-gray-700 hover:text-blue-500 transition duration-200" />
-                            </div>
-                            <div className="flex flex-1 justify-end md:justify-end">
-                                <CarouselNext className="text-gray-700 hover:text-blue-500 transition duration-200" />
+                            <div className="flex justify-between items-center w-full mt-2">
+                                <div className="flex flex-1 justify-start md:justify-center lg:justify-start">
+                                    <CarouselPrevious className="text-gray-700 hover:text-blue-500 transition duration-200" />
+                                </div>
+                                <div className="flex flex-1 justify-end md:justify-center lg:justify-end">
+                                    <CarouselNext className="text-gray-700 hover:text-blue-500 transition duration-200" />
+                                </div>
                             </div>
                         </div>
                     </Carousel>
