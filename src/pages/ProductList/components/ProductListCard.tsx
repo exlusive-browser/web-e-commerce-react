@@ -14,7 +14,7 @@ interface ProductListProps {
   products: Product[];
 }
 
-export const ProductCard: React.FC<ProductListProps> = ({ products }) => {
+export const ProductListCard: React.FC<ProductListProps> = ({ products }) => {
   return (
     <div className="flex flex-col">
       {products.map((product, index) => {
