@@ -1,5 +1,6 @@
 import { LandingPage } from "@/pages/Landing/LandingPage";
 import { ProductList } from "@/pages/ProductList/ProductList";
+import { ProductListCart } from "@/pages/ShoppingCart/ProductListCart";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
@@ -14,5 +15,9 @@ export const router = createBrowserRouter([
   {
     path: "/product-list/:category",
     element: <ProductList />,
+  },
+  {
+    path: "/shopping-cart",
+    element: <ProductListCart />,
   },
 ]);
