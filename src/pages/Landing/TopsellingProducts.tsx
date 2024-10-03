@@ -6,12 +6,11 @@ import { ProductCard } from './ProductCard';
 import ErrorMessage from './ErrorMessage';
 import SkeletonCard from './SkeletonCard';
 
-
 const useFeaturedProducts = () => {
   return useQuery({
     queryKey: ["featuredProducts"],
     queryFn: async () => {
-      const { data } = await axios.get("https://uninorte-web-ecommerce.inevaup.workers.dev/products?category=smartphones"); // Insert your API URL here
+      const { data } = await axios.get("https://uninorte-web-ecommerce.inevaup.workers.dev/top-selling"); 
       return data;
     },
     retry: 2, 
@@ -23,7 +22,6 @@ export const TopsellingProducts: React.FC = () => {
   const { data, error, isLoading } = useFeaturedProducts();
 
   if (isLoading) {
-    // Show multiple Skeletons while loading
     return (
       <div className="container mx-auto p-5">
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
@@ -39,7 +37,6 @@ export const TopsellingProducts: React.FC = () => {
     return <ErrorMessage />;
   }
 
-
   if (!Array.isArray(data)) {
     return <ErrorMessage />;
   }
@@ -51,7 +48,7 @@ export const TopsellingProducts: React.FC = () => {
       </h2>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {data.map((product: any) => (
-          <Link key={product.id} to={`/product/${product.id}`}>
+          <Link key={product.id} to={`/products/${product.id}`} onClick={() => console.log(`Navigating to /products/${product.id}`)}>
             <ProductCard {...product} />
           </Link>
         ))}

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { importImage } from "@/lib/image-utils";
 
 interface ProductCardProps {
     id: number;
@@ -27,21 +28,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     rating,
 }) => (
     <div className="bg-white border border-gray-300 rounded-lg shadow-md p-4 flex flex-col justify-between transform transition-transform hover:scale-105 h-full">
-        <Link to={`/product/${id}`} className="flex-1">
+        <Link to={`/products/${id}`} className="flex-1">
             <div className="relative w-full h-52 overflow-hidden rounded-lg mb-3 group">
                 <img
-                    src={image}
+                    src={importImage(image)} 
                     alt={title}
                     className="absolute w-full h-full object-contain transition-opacity duration-300"
                 />
                 <img
-                    src={hoverImage}
+                    src={importImage(hoverImage)} 
                     alt={`${title} hover`}
                     className="absolute w-full h-full object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                    style={{ zIndex: 10 }} // Asegúrate de que esta imagen esté por encima
+                    style={{ zIndex: 10 }}
                 />
             </div>
-            <div className="flex flex-col h-40"> {/* Estableciendo altura fija para mantener consistencia */}
+            <div className="flex flex-col h-40">
                 <h3 className="font-semibold">{title}</h3>
                 <p className="text-gray-500 text-sm">{brand}</p>
                 <div className="flex items-center space-x-2">
