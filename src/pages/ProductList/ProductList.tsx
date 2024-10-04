@@ -20,8 +20,8 @@ import { useParams } from "react-router-dom";
 
 
 export function ProductList() {
-  const { category } = useParams();
-
+  const { id } = useParams();
+  console.log(id);
   return (
     <MainLayout>
       <DynamicBreadcrumb />
@@ -29,7 +29,7 @@ export function ProductList() {
         <div className="mb-4 md:hidden">
           <div className="flex justify-between mb-4 md:hidden">
             <div className="w-1/2 mr-2">
-              <FilterSection />
+              <FilterSection category={id || "null"} />
             </div>
             <div className="w-1/2 ml-2">
               <OrderSection />
@@ -39,7 +39,7 @@ export function ProductList() {
         </div>
 
         <div className="hidden md:flex md:w-1/5 p-4 rounded-md">
-          <FilterSection />
+          <FilterSection category={id || "null"}/>
         </div>
 
         <div className="flex-1 p-4 md:w-2/3">
