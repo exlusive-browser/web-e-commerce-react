@@ -10,7 +10,7 @@ interface Product {
   discount: string;
   description: string;
   image: string;
-  hoverImage: string; // New hover image property
+  hoverImage: string; 
 }
 
 interface ProductListProps {
@@ -21,7 +21,7 @@ export const ProductListCard: React.FC<ProductListProps> = ({ products }) => {
   return (
     <div className="flex flex-col">
       {products.map((product, index) => {
-        const [currentImage, setCurrentImage] = useState(product.image); // Manage image state for hover effect
+        const [currentImage, setCurrentImage] = useState(product.image); 
 
         const fixedPrice = parseFloat(product.price.replace('$', '').replace(/\./g, ''));
         const fixedDiscount = Math.abs(parseInt(product.discount.replace('%', ''), 10));

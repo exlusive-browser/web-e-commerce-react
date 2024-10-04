@@ -27,7 +27,7 @@ const useProductList = (category: string) => {
 
 export function ProductList() {
 
-  const { category } = useParams<{ category: string }>();
+  const { id: category } = useParams();
   const { data } = useProductList(category || '');
   const formattedCategory = (category ?? '')
     .split('-')
