@@ -1,7 +1,7 @@
 import { MainLayout } from "@/layout/MainLayout";
 import DynamicBreadcrumb from "@/components/ui/dynamicbreadcrumb";
 import { ProductItemCart } from "@/pages/ShoppingCart/components/ProductItemCart";
-import imgTest from "@/assets/images/product1.png";
+import imgTest from "@/assets/images/product1.jpg";
 
 export function ProductListCart() {
   return (
@@ -9,7 +9,6 @@ export function ProductListCart() {
       <DynamicBreadcrumb />
       <h1>Shopping Cart</h1>
       <div className="flex flex-row justify-center p-[50px]">
-        
         <ProductItemCart
           products={[
             {
