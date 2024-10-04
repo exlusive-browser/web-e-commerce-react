@@ -1,61 +1,71 @@
+import { importImage } from "@/lib/image-utils";
 import { StarsRating } from "./StarsRating";
 import cartIcon from "@/assets/plp/cart.svg";
+import { useState } from "react";
 
 interface Product {
-  name: string;
-  rating: number;
-  price: number;
-  discount: number;
+  title: string;
+  rating: string;
+  originalPrice: string;
+  discount: string;
   description: string;
-  img: string;
+  image: string;
+  hoverImage: string; 
 }
 
 interface ProductListProps {
   products: Product[];
 }
 
-export const ProductCard: React.FC<ProductListProps> = ({ products }) => {
+export const ProductListCard: React.FC<ProductListProps> = ({ products }) => {
   return (
     <div className="flex flex-col">
       {products.map((product, index) => {
+        const [currentImage, setCurrentImage] = useState(product.image); 
+
+        const fixedPrice = parseFloat(product.originalPrice.replace('$', '').replace(/\./g, ''));
+        const fixedDiscount = Math.abs(parseInt(product.discount.replace('%', ''), 10));
         const discountedPrice = (
-          product.price -
-          (product.price * product.discount) / 100
+          fixedPrice - (fixedPrice * fixedDiscount) / 100
         ).toFixed(2);
+
+        const fixedRating = Math.round(parseFloat(product.rating.split(' ')[0]));
 
         return (
           <div
             key={index}
             className="flex flex-col lg:flex-row w-full h-auto lg:h-80 max-w-5xl mb-10 cursor-pointer rounded-2xl overflow-hidden transition-transform transform hover:scale-105 shadow-md"
+            onMouseEnter={() => setCurrentImage(product.hoverImage)}
+            onMouseLeave={() => setCurrentImage(product.image)}
           >
             <img
-              src={product.img}
-              alt={product.name}
-              className="w-full lg:w-[35%] object-cover h-64 lg:h-auto"
+              src={importImage(currentImage)} 
+              alt={product.title}
+              className="w-full lg:w-[35%] object-cover h-64 lg:h-auto transition-opacity duration-500 ease-in-out"
             />
             <div className="p-5 flex flex-col justify-between flex-1">
               <div>
                 <h2 className="text-lg md:text-2xl font-semibold my-1">
-                  {product.name}
+                  {product.title}
                 </h2>
-                <StarsRating rating={product.rating} />
+                <StarsRating rating={fixedRating} />
               </div>
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-3 items-start sm:items-center">
-                {product.discount > 0 ? (
+                {fixedDiscount > 0 ? (
                   <>
                     <p className="text-gray-500 text-lg sm:text-xl md:text-2xl font-light line-through decoration-1">
-                      ${product.price.toLocaleString()}
+                      ${fixedPrice.toLocaleString()}
                     </p>
                     <p className="text-lg sm:text-xl md:text-2xl font-bold">
                       ${Number(discountedPrice).toLocaleString()}
                     </p>
                     <p className="text-[#3498db] font-bold">
-                      {product.discount}% off
+                      {fixedDiscount}% off
                     </p>
                   </>
                 ) : (
                   <p className="text-lg sm:text-xl md:text-2xl font-bold">
-                    ${product.price.toLocaleString()}
+                    ${fixedPrice.toLocaleString()}
                   </p>
                 )}
               </div>
