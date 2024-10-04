@@ -7,11 +7,11 @@ import { importAsset, importImage } from "@/lib/image-utils";
 
 const items = [
   {
-    image: importAsset("images", "sale1.png"),
+    image: importAsset("images", "sale1.jpg"),
     link: "/",
   },
   {
-    image: importAsset("images", "sale2.png"),
+    image: importAsset("images", "sale2.jpg"),
     link: "/",
   },
 ];
@@ -22,11 +22,11 @@ export function LandingPage() {
       <DynamicBreadcrumb />
       <AdBanner items={items} />
       <PromotionalImages
-        item={{ image: importImage("sale3.png"), link: "/" }}
+        item={{ image: importImage("sale3.jpg"), link: "/" }}
       />
       <TopsellingProducts />
       <PromotionalImages
-        item={{ image: importImage("sale4.png"), link: "/" }}
+        item={{ image: importImage("sale4.jpg"), link: "/" }}
       />
     </MainLayout>
   );
