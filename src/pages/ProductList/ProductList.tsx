@@ -75,10 +75,6 @@ export function ProductList() {
         item={{ image: importImage("plp-ad.jpg"), link: "/" }}
       />
 
-      <PromotionalImages
-        item={{ image: importImage("plp-ad.jpg"), link: "/" }}
-      />
-
     </MainLayout>
   );
 }
