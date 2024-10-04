@@ -17,15 +17,15 @@ interface ProductCart {
   amount: number;
 }
 
-interface ProducItemCartProps {
+interface ProductItemCartProps {
   products: ProductCart[];
+  setCartProducts: React.Dispatch<React.SetStateAction<ProductCart[]>>;
 }
 
-export const ProductItemCart: React.FC<ProducItemCartProps> = ({
+export const ProductItemCart: React.FC<ProductItemCartProps> = ({
   products,
+  setCartProducts,
 }) => {
-  const [cartProducts, setCartProducts] = useState<ProductCart[]>(products);
-
   const handleAmountChange = (productId: number, newAmount: number) => {
     setCartProducts((prevProducts) =>
       prevProducts.map((product) =>
@@ -35,17 +35,18 @@ export const ProductItemCart: React.FC<ProducItemCartProps> = ({
   };
 
   return (
-    <div className="flex flex-col gap-4 ">
-      {cartProducts.map((product, index) => {
+    <div className="flex flex-col gap-4">
+      {products.map((product) => {
         const [currentImage, setCurrentImage] = useState(product.image);
+
         return (
           <div
-            key={index}
+            key={product.id}
             className="flex justify-center bg-white rounded-2xl shadow-md py-4 px-8 max-h-[400px]"
             onMouseEnter={() => setCurrentImage(product.hoverImage)}
             onMouseLeave={() => setCurrentImage(product.image)}
           >
-            <div className="flex flex-col sm:flex-row h-full ">
+            <div className="flex flex-col sm:flex-row h-full w-full">
               <div className="h-[100px] sm:max-w-[300px] sm:h-full overflow-hidden rounded-lg mb-3 group">
                 <img
                   src={importImage(currentImage)}
@@ -84,14 +85,16 @@ export const ProductItemCart: React.FC<ProducItemCartProps> = ({
                   <p className="text-gray-500 text-xs md:text-sm">
                     {product.rating}
                   </p>
-                  {/* Añadir AmountChooser aquí */}
                 </div>
               </Link>
-              <AmountChooser
-                onAmountChange={(newAmount) =>
-                  handleAmountChange(product.id, newAmount)
-                }
-              />
+              <div className="flex items-center justify-end">
+                <AmountChooser
+                  onAmountChange={(newAmount) =>
+                    handleAmountChange(product.id, newAmount)
+                  }
+                  initialAmount={product.amount}
+                />
+              </div>
             </div>
           </div>
         );
