@@ -30,7 +30,7 @@ export const TechnicalSpecifications: React.FC<ProductDetailProps> = ({ id }) =>
         return <ErrorMessage />
     }
     return (
-        <section className="tech-spec px-2 lg:px-24 bg-white">
+        <section className="tech-spec px-3 lg:px-24 bg-white">
             <h2 className="pt-8 text-2xl font-bold text-[#333]">Technical specifications</h2>
             <hr className="border-none h-1 bg-[#2e86c1] w-full m-0" />
             <table className="w-full border-collapse mt-5">

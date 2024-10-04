@@ -9,7 +9,7 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-lg bg-card text-card-foreground shadow-sm", // Eliminar "border"
+      "rounded-lg bg-card text-card-foreground", // Eliminar "border"
       "w-full h-auto", // O ajustar con la clase de tamaño que prefieras
       className
     )}
