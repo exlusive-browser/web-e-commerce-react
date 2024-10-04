@@ -28,7 +28,7 @@ export function ProductContainer() {
     if (isLoading) {
         return (
             <div className="flex flex-col">
-                {Array(6).fill(0).map((_, index) => (
+                {Array(10).fill(0).map((_, index) => (
                     <SkeletonCard key={index} />
                 ))}
             </div>
