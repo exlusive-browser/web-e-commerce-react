@@ -35,7 +35,7 @@ export function ProductList() {
               <OrderSection />
             </div>
           </div>
-          <p className="font-bold pl-2">5 results in ${id}</p>
+          <p className="font-bold pl-2">5 results in {id}</p>
         </div>
 
         <div className="hidden md:flex md:w-1/5 p-4 rounded-md">
