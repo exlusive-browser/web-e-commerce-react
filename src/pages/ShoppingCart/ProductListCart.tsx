@@ -1,7 +1,6 @@
 import { MainLayout } from "@/layout/MainLayout";
 import DynamicBreadcrumb from "@/components/ui/dynamicbreadcrumb";
 import { ProductItemCart } from "@/pages/ShoppingCart/components/ProductItemCart";
-import imgTest from "@/assets/images/product1.png";
 import { PurchaseOverview } from "./components/PurchaseOverview";
 
 export function ProductListCart() {
@@ -18,6 +17,7 @@ export function ProductListCart() {
       price: "$1.029.000",
       seller: "XIAOMI",
       rating: "4.3 ★ (27 reviews)",
+      amount: 1,
     },
     {
       id: 905,
@@ -30,18 +30,20 @@ export function ProductListCart() {
       price: "$1.369.988",
       seller: "itel",
       rating: "3.8 ★ (97 reviews)",
+      amount: 1,
     },
     {
-      id: 904,
-      image: "product904.png",
-      hoverImage: "product904-hover.png",
-      title: "MOTOROLA Moto G14 128 GB 8 GB RAM Purple",
-      brand: "MOTOROLA",
-      discount: "-45%",
-      originalPrice: "$759.000",
-      price: "$415.000",
-      seller: "MOTOROLAs",
-      rating: "5 ★ (5 reviews)",
+      id: 501,
+      image: "product501.png",
+      hoverImage: "product501-hover.png",
+      title: "Canon EOS R5",
+      brand: "Canons",
+      discount: "-10%",
+      originalPrice: "$389.900",
+      price: "$349.900",
+      seller: "Best Buy",
+      rating:  "4.9 ★ (75 reviews)",
+      amount: 1,
     },
   ];
   
@@ -49,9 +51,9 @@ export function ProductListCart() {
   return (
     <MainLayout>
       <DynamicBreadcrumb />
-      <h1>Shopping Cart</h1>
+      <h1 className="pl-10 pt-5 pb-5 text-3xl text-gray-800 font-bold">SHOPPING CART</h1>
       <div className="flex flex-col-reverse justify-center lg:flex-row p-[50px] lg:p-[50px] ">
-        <div className="w-full lg:w-3/5  px-50">
+        <div className="w-full lg:w-3/5 max-w-[900px] px-50">
           <ProductItemCart products={productExample} />
         </div>
         <div className="w-full lg:w-2/5 p-[50px]">
