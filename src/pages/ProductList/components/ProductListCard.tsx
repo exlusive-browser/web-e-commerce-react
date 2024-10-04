@@ -6,7 +6,7 @@ import { useState } from "react";
 interface Product {
   title: string;
   rating: string;
-  price: string;
+  originalPrice: string;
   discount: string;
   description: string;
   image: string;
@@ -23,7 +23,7 @@ export const ProductListCard: React.FC<ProductListProps> = ({ products }) => {
       {products.map((product, index) => {
         const [currentImage, setCurrentImage] = useState(product.image); 
 
-        const fixedPrice = parseFloat(product.price.replace('$', '').replace(/\./g, ''));
+        const fixedPrice = parseFloat(product.originalPrice.replace('$', '').replace(/\./g, ''));
         const fixedDiscount = Math.abs(parseInt(product.discount.replace('%', ''), 10));
         const discountedPrice = (
           fixedPrice - (fixedPrice * fixedDiscount) / 100
