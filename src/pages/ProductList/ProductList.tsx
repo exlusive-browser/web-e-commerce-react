@@ -4,6 +4,12 @@ import { ProductListCard } from "./components/ProductListCard";
 import { PromotionalImages } from "@/pages/Landing/LandingPromotionalmages";
 import { importImage } from "@/lib/image-utils";
 
+import ErrorMessage from '../../components/ui/ErrorMessage';
+import SkeletonCard from '../../components/ui/SkeletonCard';
+import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+
 import product1Image from "@/assets/images/product1.png";
 import product11Image from "@/assets/images/product11.png";
 import product7Image from "@/assets/images/product7.png";
@@ -18,12 +24,22 @@ import product2HoverImage from "@/assets/images/product2-hover.png";
 import product9HoverImage from "@/assets/images/product9-hover.png";
 import { FilterSection } from "./FilterSection";
 import { OrderSection } from "./OrderSection";
-import { useParams } from "react-router-dom";
 
+const useProductList = () => {
+  return useQuery({
+    queryKey: ["productList"],
+    queryFn: async () => {
+      const { data } = await axios.get("https://uninorte-web-ecommerce.inevaup.workers.dev/products"); 
+      return data;
+    },
+    retry: 2, 
+    refetchOnWindowFocus: false,
+  });
+};
 
 export function ProductList() {
-  const { category } = useParams();
 
+  
   return (
     <MainLayout>
       <DynamicBreadcrumb />
@@ -49,6 +65,7 @@ export function ProductList() {
             <p className="hidden md:block font-bold mb-5 text-lg">
               10 results in Smartphones
             </p>
+
             <ProductListCard
               products={[
                 {
@@ -161,6 +178,7 @@ export function ProductList() {
                 },
               ]}
             />
+
           </div>
         </div>
 
