@@ -16,8 +16,12 @@ import product2HoverImage from "@/assets/images/product2-hover.png";
 import product9HoverImage from "@/assets/images/product9-hover.png";
 import { FilterSection } from "./FilterSection";
 import { OrderSection } from "./OrderSection";
+import { useParams } from "react-router-dom";
+
 
 export function ProductList() {
+  const { category } = useParams();
+
   return (
     <MainLayout>
       <DynamicBreadcrumb />
