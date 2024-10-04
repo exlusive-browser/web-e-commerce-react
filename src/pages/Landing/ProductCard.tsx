@@ -46,7 +46,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                 <h3 className="font-semibold">{title}</h3>
                 <p className="text-gray-500 text-sm">{brand}</p>
                 <div className="flex items-center space-x-2">
-                    <p className="text-white" style={{ backgroundColor: "#2e86c1", padding: "0.25rem 0.5rem", borderRadius: "0.25rem", fontSize: "0.75rem" }}>{discount}</p>
+                    <p className="text-white" style={{ backgroundColor: '#2e86c1', padding: '0.25rem 0.5rem', borderRadius: '0.25rem', fontSize: '0.75rem' }}>{discount}</p>
                     <p className="text-gray-500 line-through text-sm">{originalPrice}</p>
                 </div>
                 <p className="text-lg font-bold">{price}</p>
@@ -56,7 +56,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                 <p className="text-gray-500 text-xs">{rating}</p>
             </div>
         </Link>
-        <button style={{ backgroundColor: "#3498db" }} className="text-white py-2 px-4 rounded mt-2 hover:bg-blue-600 flex items-center justify-center">
+        <button style={{ backgroundColor: '#3498db' }} className="text-white py-2 px-4 rounded mt-2 hover:bg-blue-600 flex items-center justify-center">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
