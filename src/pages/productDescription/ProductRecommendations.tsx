@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ProductCard } from "../Landing/ProductCard"; 
-import product13Image from "@/assets/images/magsafe.png";
-import product14Image from "@/assets/images/magsafe_hover.png";
-import product15Image from "@/assets/images/airpods.png";
-import product16Image from "@/assets/images/airpods_hover.png";
-import product17Image from "@/assets/images/cargador.png";
-import product18Image from "@/assets/images/cargador_hover.png";
-import product19Image from "@/assets/images/case.png";
-import product20Image from "@/assets/images/case_hover.png";
+import { ProductCard } from "../Landing/ProductCard";
+import product13Image from "@/assets/images/magsafe.jpg";
+import product14Image from "@/assets/images/magsafe_hover.jpg";
+import product15Image from "@/assets/images/airpods.jpg";
+import product16Image from "@/assets/images/airpods_hover.jpg";
+import product17Image from "@/assets/images/cargador.jpg";
+import product18Image from "@/assets/images/cargador_hover.jpg";
+import product19Image from "@/assets/images/case.jpg";
+import product20Image from "@/assets/images/case_hover.jpg";
 
 export const ProductRecommendations: React.FC = () => {
   const products = [
@@ -66,7 +66,10 @@ export const ProductRecommendations: React.FC = () => {
     <div className="container mx-auto p-5">
       <section className="might-be-int" id="might-be-int">
         <h2 className="text-2xl font-bold mb-4">You might be interested in</h2>
-        <hr className="mb-4" style={{ borderColor: "#2e86c1", borderWidth: "2px" }} />
+        <hr
+          className="mb-4"
+          style={{ borderColor: "#2e86c1", borderWidth: "2px" }}
+        />
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {products.map((product) => (
             <ProductCard
