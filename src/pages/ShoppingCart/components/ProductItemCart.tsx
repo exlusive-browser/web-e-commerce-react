@@ -1,12 +1,18 @@
-import cartIcon from "@/assets/plp/cart.svg";
+import { Link } from "react-router-dom";
+import { importImage } from "@/lib/image-utils";
+import { useState } from "react";
 
 interface ProductCart {
-  name: string;
-  rating: number;
-  price: number;
-  discount: number;
-  description: string;
-  img: string;
+  id: number;
+  image: string;
+  hoverImage: string;
+  title: string;
+  brand: string;
+  discount: string;
+  originalPrice: string;
+  price: string;
+  seller: string;
+  rating: string;
 }
 
 interface ProducItemCartProps {
@@ -17,55 +23,40 @@ export const ProductItemCart: React.FC<ProducItemCartProps> = ({
   products,
 }) => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-4 ">
       {products.map((product, index) => {
-        const discountedPrice = (
-          product.price -
-          (product.price * product.discount) / 100
-        ).toFixed(2);
-
+         const [currentImage, setCurrentImage] = useState(product.image); 
         return (
           <div
             key={index}
-            className="flex flex-col lg:flex-row w-[60%] h-60 lg:h-60 max-w-5xl mb-10 cursor-pointer rounded-2xl overflow-hidden transition-transform transform hover:scale-105 shadow-md"
+            className="flex justify-center bg-white rounded-2xl shadow-md py-4 px-8 max-h-[300px] "
+            onMouseEnter={() => setCurrentImage(product.hoverImage)}
+            onMouseLeave={() => setCurrentImage(product.image)}
           >
-            <img
-              src={product.img}
-              alt={product.name}
-              className="w-full lg:w-[35%] object-cover h-64 lg:h-auto"
-            />
-            <div className="p-5 flex flex-col justify-between flex-1">
-              <div>
-                <h2 className="text-lg md:text-2xl font-semibold my-1">
-                  {product.name}
-                </h2>
-                <p className="text-sm md:text-sm mb-5">
-                {product.description.length > 100
-                  ? `${product.description.slice(0, 100)}...`
-                  : product.description}
-              </p>
-              </div>
-              <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mb-3 items-start sm:items-center">
-                {product.discount > 0 ? (
-                  <>
-                    <p className="text-gray-500 text-lg sm:text-xl md:text-2xl font-light line-through decoration-1">
-                      ${product.price.toLocaleString()}
+            <Link to={`/products/${product.id}`} className="flex-1 mb-2">
+            <div className="flex flex-col sm:flex-row h-full ">
+                <div className="  h-[100px] sm:max-w-[300px] sm:h-full overflow-hidden rounded-lg mb-3 group">
+                    <img
+                         src={importImage(currentImage)} 
+                        alt={product.title}
+                        className=" object-cover transition-opacity duration-300"
+                    />
+                </div>
+                <div className="flex flex-col">
+                    <h3 className="font-semibold text-sm md:text-base">{product.title}</h3>
+                    <p className="text-gray-500 text-xs md:text-sm">{product.brand}</p>
+                    <div className="flex items-center space-x-2">
+                        <p className="text-white" style={{ backgroundColor: "#2e86c1", padding: "0.25rem 0.5rem", borderRadius: "0.25rem", fontSize: "0.625rem" }}>{product.discount}</p>
+                        <p className="text-gray-500 line-through text-xs md:text-sm">{product.originalPrice}</p>
+                    </div>
+                    <p className="text-lg font-bold">{product.price}</p>
+                    <p className="text-gray-700 text-xs md:text-sm">
+                        <strong>Sold by:</strong> {product.seller}
                     </p>
-                    <p className="text-lg sm:text-xl md:text-2xl font-bold">
-                      ${Number(discountedPrice).toLocaleString()}
-                    </p>
-                    <p className="text-[#3498db] font-bold">
-                      {product.discount}% off
-                    </p>
-                  </>
-                ) : (
-                  <p className="text-lg sm:text-xl md:text-2xl font-bold">
-                    ${product.price.toLocaleString()}
-                  </p>
-                )}
-              </div>
-              
-            </div>
+                    <p className="text-gray-500 text-xs md:text-sm">{product.rating}</p>
+                </div>
+                </div>
+            </Link>
           </div>
         );
       })}
