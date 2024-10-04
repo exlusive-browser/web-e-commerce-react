@@ -16,7 +16,7 @@ const categoryToMenuItem = (category: Category) => {
     title: category.title,
     links: category.subCategories.map((subCategory) => ({
       label: subCategory.title,
-      url: `/products?category=${slugify(subCategory.title)}`,
+      url: `/products/category/${slugify(subCategory.title)}`,
     })),
   };
 };

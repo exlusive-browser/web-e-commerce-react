@@ -10,11 +10,11 @@ export const router = createBrowserRouter([
     element: <LandingPage />,
   },
   {
-    path: "/product-list",
+    path: "/products",
     element: <p>Product List Generic</p>,
   },
   {
-    path: "/products",
+    path: "/products/category/:id",
     element: <ProductList />,
   },
   {
