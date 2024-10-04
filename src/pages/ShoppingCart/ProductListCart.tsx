@@ -33,18 +33,18 @@ export function ProductListCart() {
       amount: 1,
     },
     {
-      id: 501,
-      image: "product501.png",
-      hoverImage: "product501-hover.png",
-      title: "Canon EOS R5",
-      brand: "Canons",
-      discount: "-10%",
-      originalPrice: "$389.900",
-      price: "$349.900",
-      seller: "Best Buy",
-      rating:  "4.9 ★ (75 reviews)",
+      id: 901,
+      image: "product901.png",
+      hoverImage: "product901-hover.png",
+      title: "Iphone 14 Pro Max memory 124 Gb new",
+      brand: "Iphone",
+      discount: "-34%",
+      originalPrice: "$4.099.900",
+      price: "$3.369.988",
+      seller: "itel",
+      rating: "3.8 ★ (97 reviews)",
       amount: 1,
-    },
+    }
   ];
   
 

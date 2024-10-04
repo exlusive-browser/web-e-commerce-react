@@ -41,7 +41,7 @@ export const ProductItemCart: React.FC<ProducItemCartProps> = ({
         return (
           <div
             key={index}
-            className="flex justify-center bg-white rounded-2xl shadow-md py-4 px-8 max-h-[300px]"
+            className="flex justify-center bg-white rounded-2xl shadow-md py-4 px-8 max-h-[400px]"
             onMouseEnter={() => setCurrentImage(product.hoverImage)}
             onMouseLeave={() => setCurrentImage(product.image)}
           >
@@ -54,7 +54,7 @@ export const ProductItemCart: React.FC<ProducItemCartProps> = ({
                 />
               </div>
               <Link to={`/products/${product.id}`} className="flex-1 mb-2">
-                <div className="flex flex-col">
+                <div className="flex flex-col min-w-[70px]">
                   <h3 className="font-semibold text-sm md:text-base">
                     {product.title}
                   </h3>
