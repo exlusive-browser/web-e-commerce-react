@@ -5,6 +5,7 @@ import axios from "axios";
 import { ProductCard } from "./ProductCard"; 
 import ErrorMessage from "../../components/ui/ErrorMessage";
 import SkeletonCard from "../../components/ui/SkeletonCard";
+import { formatTitle } from "@/lib/format-title";
 
 const useFeaturedProducts = () => {
   return useQuery({
@@ -48,7 +49,7 @@ export const TopsellingProducts: React.FC = () => {
       </h2>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {data.map((product: any) => (
-          <Link key={product.id} to={`/products/${product.id}`} onClick={() => console.log(`Navigating to /products/${product.id}`)}>
+          <Link key={product.id} to={`/products/${product.id}/${formatTitle(product.title)}`} onClick={() => console.log(`Navigating to /products/${product.id}`)}>
             <ProductCard {...product} />
           </Link>
         ))}
