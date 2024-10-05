@@ -39,7 +39,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ id }) => {
 
 
     return (
-        <section className="product-desc2 px-6 md:px-24 bg-white shadow-md rounded-md" id="product-desc2">
+        <section className="product-desc2 px-6 md:px-24 bg-white rounded-md" id="product-desc2">
             <h1 className="text-2xl font-bold mb-4 text-[#333] py-6">{data.title}</h1>
             <div className="container-sec1 flex flex-col xl:flex-row gap-6">
                 <div className="flex flex-1 justify-center items-center">
@@ -62,13 +62,11 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ id }) => {
                             ))}
                         </CarouselContent>
                         <div className="flex justify-between items-center w-full mt-2"> {/* Ajustar la posición de los botones */}
-                            <div className="flex justify-between items-center w-full mt-2">
-                                <div className="flex flex-1 justify-start md:justify-center lg:justify-start">
-                                    <CarouselPrevious className="text-gray-700 hover:text-blue-500 transition duration-200" />
-                                </div>
-                                <div className="flex flex-1 justify-end md:justify-center lg:justify-end">
-                                    <CarouselNext className="text-gray-700 hover:text-blue-500 transition duration-200" />
-                                </div>
+                            <div className="flex flex-1 justify-start md:justify-center lg:justify-start">
+                                <CarouselPrevious className="text-gray-700 hover:text-blue-500 transition duration-200" />
+                            </div>
+                            <div className="flex flex-1 justify-end md:justify-center lg:justify-end">
+                                <CarouselNext className="text-gray-700 hover:text-blue-500 transition duration-200" />
                             </div>
                         </div>
                     </Carousel>
