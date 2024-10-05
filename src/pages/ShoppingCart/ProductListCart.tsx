@@ -79,14 +79,14 @@ export function ProductListCart() {
       <h1 className="pl-10 pt-5 pb-5 text-3xl text-gray-800 font-bold  text-center">
         SHOPPING CART
       </h1>
-      <div className="flex flex-col-reverse justify-center lg:flex-row p-[50px] lg:p-[50px] ">
-        <div className="w-full lg:w-3/5 max-w-[900px] px-50">
+      <div className="flex flex-col-reverse justify-center lg:flex-row  p-[50px] lg:p-[50px] gap-4">
+        <div className="w-full lg:w-3/5">
           <ProductItemCart
             products={cartProducts}
             setCartProducts={setCartProducts}
           />
         </div>
-        <div className="w-full lg:w-2/5 p-[50px]">
+        <div className="w-full lg:w-2/5">
           <PurchaseOverview
             subtotal={subtotal}
             discounts={discounts}
