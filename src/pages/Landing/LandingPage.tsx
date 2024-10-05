@@ -2,8 +2,8 @@ import { MainLayout } from "@/layout/MainLayout";
 import DynamicBreadcrumb from "@/components/ui/dynamicbreadcrumb";
 import { TopsellingProducts } from "./TopsellingProducts";
 import { AdBanner } from "./LandingAdBanner";
-import { PromotionalImages } from "./LandingPromotionalmages";
-import { importAsset, importImage } from "@/lib/image-utils";
+import { importAsset } from "@/lib/image-utils";
+import { DynamicPromotionalImage } from "./DynamicPromotionalImage";
 
 const items = [
   {
@@ -21,13 +21,9 @@ export function LandingPage() {
     <MainLayout>
       <DynamicBreadcrumb />
       <AdBanner items={items} />
-      <PromotionalImages
-        item={{ image: importImage("sale3.jpg"), link: "/" }}
-      />
+      <DynamicPromotionalImage imgId="sale3.jpg" />
       <TopsellingProducts />
-      <PromotionalImages
-        item={{ image: importImage("sale4.jpg"), link: "/" }}
-      />
+      <DynamicPromotionalImage imgId="sale4.jpg" />
     </MainLayout>
   );
 }
