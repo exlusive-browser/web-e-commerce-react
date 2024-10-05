@@ -40,7 +40,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ id }) => {
 
     return (
         <section className="product-desc2 px-6 md:px-24 bg-white rounded-md" id="product-desc2">
-            <h1 className="text-3xl font-bold mb-4 text-[#333] py-6">{data.title}</h1>
+            <h1 className="text-2xl md:text-3xl font-bold mb-4 text-[#333] py-6">{data.title}</h1>
             <div className="container-sec1 flex flex-col xl:flex-row gap-6">
                 <div className="flex flex-1 justify-center items-center">
                     <Carousel className="w-full max-w-md">
