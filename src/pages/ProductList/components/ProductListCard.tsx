@@ -56,12 +56,14 @@ export const ProductListCard: React.FC<ProductListProps> = ({ products }) => {
               className="flex flex-col lg:flex-row w-full h-auto lg:h-80 max-w-5xl mb-10 cursor-pointer rounded-2xl overflow-hidden transition-transform transform lg:hover:scale-105 shadow-md"
               onMouseEnter={() => isLgScreen && setCurrentImage(product.hoverImage)}
               onMouseLeave={() => isLgScreen && setCurrentImage(product.image)}>
+              <div className="bg-white">
 
-              <img
-                src={importImage(currentImage)}
-                alt={product.title}
-                className="w-full lg:w-[35%] object-cover h-64 lg:h-auto transition-opacity duration-500 ease-in-out"
-              />
+                <img
+                  src={importImage(currentImage)}
+                  alt={product.title}
+                  className="w-full lg:w-[35%] object-contain h-64 lg:h-auto transition-opacity duration-500 ease-in-out"
+                />
+              </div>
               <div className="p-5 flex flex-col justify-between flex-1">
                 <div>
                   <h2 className="text-lg md:text-2xl font-semibold my-1">
@@ -89,10 +91,10 @@ export const ProductListCard: React.FC<ProductListProps> = ({ products }) => {
                   )}
                 </div>
                 <p className="text-sm md:text-sm mb-5">{product.description}</p>
-                
+
                 <button>
                   <div className="flex h-11 w-full lg:w-[150px] rounded-xl bg-[#3498db] items-center justify-center">
-                    <svg 
+                    <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
