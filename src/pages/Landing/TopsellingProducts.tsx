@@ -5,6 +5,8 @@ import axios from "axios";
 import { ProductCard } from "./ProductCard"; 
 import ErrorMessage from "../../components/ui/ErrorMessage";
 import SkeletonCard from "../../components/ui/SkeletonCard";
+import { formatTitle } from "@/lib/format-title";
+import { Product } from "@/entities/Product";
 
 const useFeaturedProducts = () => {
   return useQuery({
@@ -47,8 +49,8 @@ export const TopsellingProducts: React.FC = () => {
         Technology <span className="text-gray-500">{data.length} results</span>
       </h2>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        {data.map((product: any) => (
-          <Link key={product.id} to={`/products/${product.id}`} onClick={() => console.log(`Navigating to /products/${product.id}`)}>
+        {data.map((product: Product) => (
+          <Link key={product.id} to={`/products/${product.id}/${formatTitle(product.title)}`} onClick={() => console.log(`Navigating to /products/${product.id}`)}>
             <ProductCard {...product} />
           </Link>
         ))}

@@ -20,7 +20,7 @@ interface ProductDetailProps {
 }
 
 export const ProductDetail: React.FC<ProductDetailProps> = ({ id }) => {
-    const { isLoading, isError, data, error } = useQuery<Product, Error>({
+    const { isLoading, isError, data } = useQuery<Product, Error>({
         queryKey: ["product", id],
         queryFn: () => getProductById(id),
     });
@@ -53,7 +53,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ id }) => {
                                                 <img
                                                     src={image}
                                                     alt={`Slide ${index + 1}`}
-                                                    className="h-80 object-contain rounded-md max-h-full" // Solo usando Tailwind CSS
+                                                    className="h-80 object-contain rounded-md max-h-full"
                                                 />
                                             </CardContent>
                                         </Card>
@@ -61,7 +61,7 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ id }) => {
                                 </CarouselItem>
                             ))}
                         </CarouselContent>
-                        <div className="flex justify-between items-center w-full mt-2"> {/* Ajustar la posición de los botones */}
+                        <div className="flex justify-between items-center w-full mt-2">
                             <div className="flex flex-1 justify-start md:justify-center lg:justify-start">
                                 <CarouselPrevious className="text-gray-700 hover:text-blue-500 transition duration-200" />
                             </div>

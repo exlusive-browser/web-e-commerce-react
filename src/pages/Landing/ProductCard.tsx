@@ -47,7 +47,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                         src={importImage(hoverImage)} 
                         alt={`${title} hover`}
                         className="absolute w-full h-full object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                        style={{ zIndex: 10 }}
                     />
                 </div>
                 <div className="flex flex-col">

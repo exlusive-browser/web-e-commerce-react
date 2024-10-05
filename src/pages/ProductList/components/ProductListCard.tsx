@@ -9,6 +9,7 @@ interface Product {
   id: number;
   title: string;
   rating: string;
+  price: string;
   originalPrice: string;
   discount: string;
   description: string;
@@ -41,13 +42,9 @@ export const ProductListCard: React.FC<ProductListProps> = ({ products }) => {
           };
         }, []);
 
-        const fixedPrice = parseFloat(product.originalPrice.replace('$', '').replace(/\./g, ''));
-        const fixedDiscount = Math.abs(parseInt(product.discount.replace('%', ''), 10));
-        const discountedPrice = (
-          fixedPrice - (fixedPrice * fixedDiscount) / 100
-        ).toFixed(2);
+        const fixedDiscount = Math.abs(parseInt(product.discount.replace("%", ""), 10));
 
-        const fixedRating = Math.round(parseFloat(product.rating.split(' ')[0]));
+        const fixedRating = Math.round(parseFloat(product.rating.split(" ")[0]));
 
         return (
           <Link to={`/products/${product.id}/${formatTitle(product.title)}`} key={index}>
@@ -56,12 +53,14 @@ export const ProductListCard: React.FC<ProductListProps> = ({ products }) => {
               className="flex flex-col lg:flex-row w-full h-auto lg:h-80 max-w-5xl mb-10 cursor-pointer rounded-2xl overflow-hidden transition-transform transform lg:hover:scale-105 shadow-md"
               onMouseEnter={() => isLgScreen && setCurrentImage(product.hoverImage)}
               onMouseLeave={() => isLgScreen && setCurrentImage(product.image)}>
+              <div className="flex bg-white align-center justify-center md:w-[300px]  w-auto h-[300px] md:h-auto">
 
-              <img
-                src={importImage(currentImage)}
-                alt={product.title}
-                className="w-full lg:w-[35%] object-cover h-64 lg:h-auto transition-opacity duration-500 ease-in-out"
-              />
+                <img
+                  src={importImage(currentImage)}
+                  alt={product.title}
+                  className=" object-contain h-full lg:h-full transition-opacity duration-500 ease-in-out"
+                />
+              </div>
               <div className="p-5 flex flex-col justify-between flex-1">
                 <div>
                   <h2 className="text-lg md:text-2xl font-semibold my-1">
@@ -73,26 +72,26 @@ export const ProductListCard: React.FC<ProductListProps> = ({ products }) => {
                   {fixedDiscount > 0 ? (
                     <>
                       <p className="text-gray-500 text-lg sm:text-xl md:text-2xl font-light line-through decoration-1">
-                        ${fixedPrice.toLocaleString()}
+                        {product.originalPrice}
                       </p>
                       <p className="text-lg sm:text-xl md:text-2xl font-bold">
-                        ${Number(discountedPrice).toLocaleString()}
+                        {product.price}
                       </p>
                       <p className="text-[#3498db] font-bold">
-                        {fixedDiscount}% off
+                        {product.discount} off
                       </p>
                     </>
                   ) : (
                     <p className="text-lg sm:text-xl md:text-2xl font-bold">
-                      ${fixedPrice.toLocaleString()}
+                      {product.originalPrice}
                     </p>
                   )}
                 </div>
                 <p className="text-sm md:text-sm mb-5">{product.description}</p>
-                
+
                 <button>
                   <div className="flex h-11 w-full lg:w-[150px] rounded-xl bg-[#3498db] items-center justify-center">
-                    <svg 
+                    <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
