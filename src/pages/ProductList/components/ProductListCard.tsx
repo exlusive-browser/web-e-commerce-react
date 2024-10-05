@@ -9,6 +9,7 @@ interface Product {
   id: number;
   title: string;
   rating: string;
+  price: string;
   originalPrice: string;
   discount: string;
   description: string;
@@ -41,13 +42,9 @@ export const ProductListCard: React.FC<ProductListProps> = ({ products }) => {
           };
         }, []);
 
-        const fixedPrice = parseFloat(product.originalPrice.replace('$', '').replace(/\./g, ''));
-        const fixedDiscount = Math.abs(parseInt(product.discount.replace('%', ''), 10));
-        const discountedPrice = (
-          fixedPrice - (fixedPrice * fixedDiscount) / 100
-        ).toFixed(2);
+        const fixedDiscount = Math.abs(parseInt(product.discount.replace("%", ""), 10));
 
-        const fixedRating = Math.round(parseFloat(product.rating.split(' ')[0]));
+        const fixedRating = Math.round(parseFloat(product.rating.split(" ")[0]));
 
         return (
           <Link to={`/products/${product.id}/${formatTitle(product.title)}`} key={index}>
@@ -75,18 +72,18 @@ export const ProductListCard: React.FC<ProductListProps> = ({ products }) => {
                   {fixedDiscount > 0 ? (
                     <>
                       <p className="text-gray-500 text-lg sm:text-xl md:text-2xl font-light line-through decoration-1">
-                        ${fixedPrice.toLocaleString()}
+                        {product.originalPrice}
                       </p>
                       <p className="text-lg sm:text-xl md:text-2xl font-bold">
-                        ${Number(discountedPrice).toLocaleString()}
+                        {product.price}
                       </p>
                       <p className="text-[#3498db] font-bold">
-                        {fixedDiscount}% off
+                        {product.discount} off
                       </p>
                     </>
                   ) : (
                     <p className="text-lg sm:text-xl md:text-2xl font-bold">
-                      ${fixedPrice.toLocaleString()}
+                      {product.originalPrice}
                     </p>
                   )}
                 </div>

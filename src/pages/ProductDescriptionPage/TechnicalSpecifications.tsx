@@ -1,24 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { Product } from "@/entities/Product";
 import { getProductById } from "@/repositores/product.repository";
-import { importImage } from "@/lib/image-utils";
 import { Spinner } from "@/components/ui/spinner";
 import ErrorMessage from "@/components/ui/ErrorMessage";
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from "@/components/ui/carousel"
-import { Card, CardContent } from "@/components/ui/card"
+
 
 interface ProductDetailProps {
     id: number;
 }
 
 export const TechnicalSpecifications: React.FC<ProductDetailProps> = ({ id }) => {
-    const { isLoading, isError, data, error } = useQuery<Product, Error>({
+    const { isLoading, isError, data } = useQuery<Product, Error>({
         queryKey: ["product", id],
         queryFn: () => getProductById(id),
     });

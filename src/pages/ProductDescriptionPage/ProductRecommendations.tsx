@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ProductCard } from "../Landing/ProductCard";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import SkeletonCard from "@/components/ui/SkeletonCard";
+import { Product } from "@/entities/Product";
 
 interface ProductRecommendationsProps {
   currentProductId: number;
@@ -41,7 +42,7 @@ export const ProductRecommendations: React.FC<ProductRecommendationsProps> = ({ 
         <h2 className="text-2xl font-bold mb-4">You might be interested in</h2>
         <hr className="mb-4" style={{ borderColor: "#2e86c1", borderWidth: "2px" }} />
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-          {data.map((product: any) => (
+          {data.map((product: Product) => (
             <Link
               key={product.id}
               to={`/products/${product.id}`}
