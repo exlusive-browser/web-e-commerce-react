@@ -53,12 +53,12 @@ export const ProductListCard: React.FC<ProductListProps> = ({ products }) => {
               className="flex flex-col lg:flex-row w-full h-auto lg:h-80 max-w-5xl mb-10 cursor-pointer rounded-2xl overflow-hidden transition-transform transform lg:hover:scale-105 shadow-md"
               onMouseEnter={() => isLgScreen && setCurrentImage(product.hoverImage)}
               onMouseLeave={() => isLgScreen && setCurrentImage(product.image)}>
-              <div className="bg-white">
+              <div className="flex bg-white align-center justify-center md:w-[300px]  w-auto h-[300px] md:h-auto">
 
                 <img
                   src={importImage(currentImage)}
                   alt={product.title}
-                  className="w-full lg:w-[35%] object-contain h-64 lg:h-auto transition-opacity duration-500 ease-in-out"
+                  className=" object-contain h-full lg:h-full transition-opacity duration-500 ease-in-out"
                 />
               </div>
               <div className="p-5 flex flex-col justify-between flex-1">
