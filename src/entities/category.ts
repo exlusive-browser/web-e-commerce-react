@@ -1,6 +1,5 @@
 export interface SubCategory {
   title: string;
-  url: string;
 }
 
 export interface Category {

@@ -4,6 +4,7 @@ import { LateralNavBar } from "./LateralNavBar";
 import { useQuery } from "@tanstack/react-query";
 import { Category } from "@/entities/category";
 import { getCategories } from "@/repositores/category.repository";
+import { slugify } from "@/lib/helpers";
 
 interface SubHeaderProps {
   open: boolean;
@@ -15,7 +16,7 @@ const categoryToMenuItem = (category: Category) => {
     title: category.title,
     links: category.subCategories.map((subCategory) => ({
       label: subCategory.title,
-      url: subCategory.url,
+      url: `/products/category/${slugify(subCategory.title)}`,
     })),
   };
 };
