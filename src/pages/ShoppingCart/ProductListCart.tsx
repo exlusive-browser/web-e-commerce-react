@@ -2,6 +2,7 @@ import { MainLayout } from "@/layout/MainLayout";
 import DynamicBreadcrumb from "@/components/ui/dynamicbreadcrumb";
 import { ProductItemCart } from "@/pages/ShoppingCart/components/ProductItemCart";
 import { PurchaseOverview } from "./components/PurchaseOverview";
+import { useState } from "react";
 
 export function ProductListCart() {
   const productExample = [
@@ -46,18 +47,51 @@ export function ProductListCart() {
     },
   ];
 
+  const [cartProducts, setCartProducts] = useState(productExample);
+
+  const calculateSubtotal = () => {
+    return cartProducts.reduce((total, product) => {
+      const price = parseFloat(product.originalPrice.replace(/\$|\.|,/g, ""));
+      return total + price * product.amount;
+    }, 0);
+  };
+
+  const calculateDiscounts = () => {
+    return cartProducts.map((product) => {
+      const price = parseFloat(product.originalPrice.replace(/\$|\.|,/g, ""));
+      const discountValue =
+        parseFloat(product.discount.replace(/-|%/g, "")) / 100;
+      return price * discountValue * product.amount;
+    });
+  };
+
+  const subtotal = calculateSubtotal();
+  const discounts = calculateDiscounts();
+  const totalDiscount = discounts.reduce(
+    (total, discount) => total + discount,
+    0
+  );
+  const total = subtotal - totalDiscount;
+
   return (
     <MainLayout>
       <DynamicBreadcrumb />
-      <h1 className="pl-10 pt-5 pb-5 text-3xl text-gray-800 font-bold">
+      <h1 className="pl-10 pt-5 pb-5 text-3xl text-gray-800 font-bold  text-center">
         SHOPPING CART
       </h1>
       <div className="flex flex-col-reverse justify-center lg:flex-row p-[50px] lg:p-[50px] ">
         <div className="w-full lg:w-3/5 max-w-[900px] px-50">
-          <ProductItemCart products={productExample} />
+          <ProductItemCart
+            products={cartProducts}
+            setCartProducts={setCartProducts}
+          />
         </div>
         <div className="w-full lg:w-2/5 p-[50px]">
-          <PurchaseOverview />
+          <PurchaseOverview
+            subtotal={subtotal}
+            discounts={discounts}
+            total={total}
+          />
         </div>
       </div>
     </MainLayout>
