@@ -10,6 +10,7 @@ import {
 
 function slugToTitle(slug: string) {
   return slug
+    .replace(/%/g, " ")
     .split("-")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(" ");
@@ -28,8 +29,14 @@ const DynamicBreadcrumb = () => {
           </BreadcrumbLink>
         </BreadcrumbItem>
         {pathnames.map((name, index) => {
+          // Verificar si `name` es un número
+          if (!isNaN(Number(name))) {
+            return null; // Si es un número, no se genera este BreadcrumbItem
+          }
+  
           const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
           const isLast = index === pathnames.length - 1;
+  
           return (
             <React.Fragment key={name}>
               <BreadcrumbSeparator />

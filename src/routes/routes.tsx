@@ -1,6 +1,6 @@
 import { LandingPage } from "@/pages/Landing/LandingPage";
 import { ProductList } from "@/pages/ProductList/ProductList";
-import { ProductDescription } from "@/pages/ProductDescription/ProductDescription";
+import { ProductDescription } from "@/pages/ProductDescriptionPage/ProductDescription";
 import { ProductListCart } from "@/pages/ShoppingCart/ProductListCart";
 import { createBrowserRouter } from "react-router-dom";
 
@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
     element: <ProductList />,
   },
   {
-    path: "/products/:id",
+    path: "/products/:id/:title",
     element: <ProductDescription />,
   },
   {

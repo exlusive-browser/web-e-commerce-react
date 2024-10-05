@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { importImage } from "@/lib/image-utils";
-
+import { formatTitle } from "@/lib/format-title";
 interface ProductCardProps {
     id: number;
     image: string;
@@ -36,7 +36,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
     return (
         <div className="bg-white border border-gray-300 rounded-lg shadow-md p-4 flex flex-col h-full">
-            <Link to={`/products/${id}`} className="flex-1 mb-2">
+            <Link to={`/products/${id}/${formatTitle(title)}`} className="flex-1 mb-2">
                 <div className="relative w-full h-52 overflow-hidden rounded-lg mb-3 group">
                     <img
                         src={importImage(image)} 

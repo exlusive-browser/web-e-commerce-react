@@ -3,6 +3,7 @@ import { StarsRating } from "./StarsRating";
 import cartIcon from "@/assets/plp/cart.svg";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { formatTitle } from "@/lib/format-title";
 
 interface Product {
   id: number;
@@ -49,7 +50,7 @@ export const ProductListCard: React.FC<ProductListProps> = ({ products }) => {
         const fixedRating = Math.round(parseFloat(product.rating.split(' ')[0]));
 
         return (
-          <Link to={`/products/${product.id}`} key={index}>
+          <Link to={`/products/${product.id}/${formatTitle(product.title)}`} key={index}>
 
             <div
               className="flex flex-col lg:flex-row w-full h-auto lg:h-80 max-w-5xl mb-10 cursor-pointer rounded-2xl overflow-hidden transition-transform transform lg:hover:scale-105 shadow-md"

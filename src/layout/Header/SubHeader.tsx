@@ -49,6 +49,7 @@ export const SubHeader: React.FC<SubHeaderProps> = ({
   });
 
   const menuItems = data !== undefined ? data.map(categoryToMenuItem) : [];
+  console.log(data);
 
   return (
     <>
