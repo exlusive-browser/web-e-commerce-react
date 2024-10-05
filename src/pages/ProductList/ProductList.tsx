@@ -24,15 +24,13 @@ const useProductList = (category: string) => {
   });
 };
 
-
 export function ProductList() {
-
   const { id: category } = useParams();
-  const { data } = useProductList(category || '');
-  const formattedCategory = (category ?? '')
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
+  const { data } = useProductList(category || "");
+  const formattedCategory = (category ?? "")
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
   const productCount = data?.length || 0;
 
   return (
@@ -42,28 +40,33 @@ export function ProductList() {
         <div className="mb-4 md:hidden">
           <div className="flex justify-between mb-4 md:hidden">
             <div className="w-1/2 mr-2">
-              <FilterSection />
+              <FilterSection category={category || "null"} />
             </div>
             <div className="w-1/2 ml-2">
               <OrderSection />
             </div>
           </div>
           <p className="font-bold pl-2">
-            <span className="text-gray-500 font-normal">{productCount} results in</span> {formattedCategory}
+            <span className="text-gray-500 font-normal">
+              {productCount} results in
+            </span>{" "}
+            {formattedCategory}
           </p>
         </div>
 
         <div className="hidden md:flex md:w-1/5 p-4 rounded-md">
-          <FilterSection />
+          <FilterSection category={category || "null"} />
         </div>
 
         <div className="flex-1 p-4 md:w-2/3">
           <div className="flex flex-col">
             <p className="hidden md:block font-bold mb-5 text-lg">
-              <span className="text-gray-500 font-normal">{productCount} results in</span> {formattedCategory}
+              <span className="text-gray-500 font-normal">
+                {productCount} results in
+              </span>{" "}
+              {formattedCategory}
             </p>
             <ProductContainer />
-
           </div>
         </div>
 
@@ -74,7 +77,6 @@ export function ProductList() {
       <PromotionalImages
         item={{ image: importImage("plp-ad.jpg"), link: "/" }}
       />
-
     </MainLayout>
   );
 }
