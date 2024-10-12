@@ -10,13 +10,10 @@ export const router = createBrowserRouter([
     element: <LandingPage />,
   },
   {
-    path: "/products",
-    element: <p>Product List Generic</p>,
-  },
-  {
-    path: "/products/category/:id",
+    path: "/categories/:id",
     element: <ProductList />,
   },
+  // TODO: remove :id from the path, only :title is enough
   {
     path: "/products/:id/:title",
     element: <ProductDescription />,

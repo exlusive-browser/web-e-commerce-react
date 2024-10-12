@@ -6,6 +6,7 @@ import ErrorMessage from "@/components/ui/ErrorMessage";
 import SkeletonCard from "@/components/ui/SkeletonCard";
 import { getRecommendedProducts } from "@/repositores/product.repository";
 import { Product } from "@/entities/product-item";
+import { formatTitle } from "@/lib/format-title";
 
 interface ProductRecommendationsProps {
   currentProductId: number;
@@ -53,10 +54,7 @@ export const ProductRecommendations: React.FC<ProductRecommendationsProps> = ({
           {data.map((product: Product) => (
             <Link
               key={product.id}
-              to={`/products/${product.id}`}
-              onClick={() =>
-                console.log(`Navigating to /products/${product.id}`)
-              }
+              to={`/products/${product.id}/${formatTitle(product.title)}`}
             >
               <ProductCard product={product} />
             </Link>
