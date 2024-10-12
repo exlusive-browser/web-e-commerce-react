@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { ProductCard } from "./ProductCard";
+import { ProductCard } from "../common/ProductCard";
 import ErrorMessage from "../../components/ui/ErrorMessage";
 import SkeletonCard from "../../components/ui/SkeletonCard";
 import { formatTitle } from "@/lib/format-title";

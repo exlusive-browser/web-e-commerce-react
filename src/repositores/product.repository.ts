@@ -1,5 +1,4 @@
-import { Product } from "@/entities/Product";
-import { SimplifiedProduct } from "@/entities/product-item";
+import { Product, SimplifiedProduct } from "@/entities/product-item";
 import { axiosClient } from "@/lib/axios-client";
 
 export async function getTopSellingProducts(): Promise<SimplifiedProduct[]> {
@@ -17,4 +16,17 @@ export async function getProductById(id: number): Promise<Product> {
   const product = response.data; // Ahora es un objeto directamente
 
   return product;
+}
+
+export async function getRecommendedProducts(
+  productId: number
+): Promise<Product[]> {
+  // normally, if we were using a real backend, the product id would be enough to get the recommended products
+  const baseProduct = await getProductById(productId);
+  const id = baseProduct.id;
+  const category = baseProduct.category;
+  const response = await axiosClient.get<Product[]>(
+    `/products?category=${category}&id_ne=${id}&_limit=4`
+  );
+  return response.data;
 }

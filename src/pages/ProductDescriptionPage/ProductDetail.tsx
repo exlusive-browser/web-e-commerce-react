@@ -1,5 +1,4 @@
 import { useQuery } from "@tanstack/react-query";
-import { Product } from "@/entities/Product";
 import { getProductById } from "@/repositores/product.repository";
 import { getImgUrl } from "@/lib/image-utils";
 import { Spinner } from "@/components/ui/spinner";
@@ -12,6 +11,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
+import { Product } from "@/entities/product-item";
 
 interface ProductDetailProps {
   id: number;

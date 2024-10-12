@@ -14,6 +14,7 @@ export interface Product {
   price: string;
   seller: string;
   rating: string;
+  category: string;
   description: string;
   technicalSpecifications: Specification[];
 }

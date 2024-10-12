@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { ProductCard } from "../Landing/ProductCard";
+import { ProductCard } from "../common/ProductCard";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import SkeletonCard from "@/components/ui/SkeletonCard";
-import { Product } from "@/entities/Product";
+import { getRecommendedProducts } from "@/repositores/product.repository";
+import { Product } from "@/entities/product-item";
 
 interface ProductRecommendationsProps {
   currentProductId: number;
@@ -64,18 +65,4 @@ export const ProductRecommendations: React.FC<ProductRecommendationsProps> = ({
       </section>
     </div>
   );
-};
-
-const getRecommendedProducts = async (currentProductId: number) => {
-  const baseId = Math.floor(currentProductId / 10) * 10;
-  const response = await fetch(
-    `https://uninorte-web-ecommerce.inevaup.workers.dev/products?id_ne=${currentProductId}&id_gte=${baseId}&id_lte=${
-      baseId + 9
-    }&_limit=4`
-  );
-
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
-  return response.json();
 };
