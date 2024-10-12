@@ -5,7 +5,12 @@ export async function getPromotionalImgById(
   id: string
 ): Promise<PromotionalImage> {
   const response = await axiosClient.get<PromotionalImage>(
-    `/promotional?name=${id}`
+    `/promotional?id=${id}`
   );
+  return response.data;
+}
+
+export async function getAdBannerImages(): Promise<PromotionalImage[]> {
+  const response = await axiosClient.get<PromotionalImage[]>("/ad-banner");
   return response.data;
 }
