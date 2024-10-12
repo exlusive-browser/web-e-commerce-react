@@ -2,58 +2,42 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { getImgUrl } from "@/lib/image-utils";
 import { formatTitle } from "@/lib/format-title";
+import { SimplifiedProduct } from "@/entities/product-item";
+
 interface ProductCardProps {
-  id: number;
-  image: string;
-  hoverImage: string;
-  title: string;
-  brand: string;
-  discount: string;
-  originalPrice: string;
-  price: string;
-  seller: string;
-  rating: string;
+  product: SimplifiedProduct;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({
-  id,
-  image,
-  hoverImage,
-  title,
-  brand,
-  discount,
-  originalPrice,
-  price,
-  seller,
-  rating,
-}) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const handleAddToCartClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     event.stopPropagation();
-    console.log(`Producto ${id} agregado al carrito`);
+    console.log(`Producto ${product.id} agregado al carrito`);
   };
 
   return (
     <div className="bg-white border border-gray-300 rounded-lg shadow-md p-4 flex flex-col h-full">
       <Link
-        to={`/products/${id}/${formatTitle(title)}`}
+        to={`/products/${product.id}/${formatTitle(product.title)}`}
         className="flex-1 mb-2"
       >
         <div className="relative w-full h-52 overflow-hidden rounded-lg mb-3 group">
           <img
-            src={getImgUrl(image)}
-            alt={title}
+            src={getImgUrl(product.image)}
+            alt={product.title}
             className="absolute w-full h-full object-contain transition-opacity duration-300"
           />
           <img
-            src={getImgUrl(hoverImage)}
-            alt={`${title} hover`}
+            src={getImgUrl(product.hoverImage)}
+            alt={`${product.title} hover`}
             className="absolute w-full h-full object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
           />
         </div>
         <div className="flex flex-col">
-          <h3 className="font-semibold text-sm md:text-base">{title}</h3>
-          <p className="text-gray-500 text-xs md:text-sm">{brand}</p>
+          <h3 className="font-semibold text-sm md:text-base">
+            {product.title}
+          </h3>
+          <p className="text-gray-500 text-xs md:text-sm">{product.brand}</p>
           <div className="flex items-center space-x-2">
             <p
               className="text-white"
@@ -64,17 +48,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                 fontSize: "0.625rem",
               }}
             >
-              {discount}
+              {product.discount}
             </p>
             <p className="text-gray-500 line-through text-xs md:text-sm">
-              {originalPrice}
+              {product.originalPrice}
             </p>
           </div>
-          <p className="text-lg font-bold">{price}</p>
+          <p className="text-lg font-bold">{product.price}</p>
           <p className="text-gray-700 text-xs md:text-sm">
-            <strong>Sold by:</strong> {seller}
+            <strong>Sold by:</strong> {product.seller}
           </p>
-          <p className="text-gray-500 text-xs md:text-sm">{rating}</p>
+          <p className="text-gray-500 text-xs md:text-sm">{product.rating}</p>
         </div>
       </Link>
       <button
