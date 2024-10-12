@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { importImage } from "@/lib/image-utils";
+import { getImgUrl } from "@/lib/image-utils";
 import { AmountChooser } from "./AmountChooser";
 import { useState } from "react";
 import { formatTitle } from "@/lib/format-title";
@@ -50,12 +50,15 @@ export const ProductItemCart: React.FC<ProductItemCartProps> = ({
             <div className="flex flex-col sm:flex-row h-full w-full">
               <div className="h-[100px] sm:max-w-[300px] sm:h-full overflow-hidden rounded-lg mb-3 group">
                 <img
-                  src={importImage(currentImage)}
+                  src={getImgUrl(currentImage)}
                   alt={product.title}
                   className="object-cover transition-opacity duration-300"
                 />
               </div>
-              <Link to={`/products/${product.id}/${formatTitle(product.title)}`} className="flex-1 mb-2">
+              <Link
+                to={`/products/${product.id}/${formatTitle(product.title)}`}
+                className="flex-1 mb-2"
+              >
                 <div className="flex flex-col min-w-[70px]">
                   <h3 className="font-semibold text-sm md:text-base">
                     {product.title}

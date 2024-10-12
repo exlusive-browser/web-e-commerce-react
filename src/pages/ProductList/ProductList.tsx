@@ -2,7 +2,7 @@ import { MainLayout } from "@/layout/MainLayout";
 import DynamicBreadcrumb from "@/components/ui/dynamicbreadcrumb";
 import { ProductContainer } from "./components/ProductContainer";
 import { PromotionalImages } from "@/pages/Landing/LandingPromotionalmages";
-import { importImage } from "@/lib/image-utils";
+import { getImgUrl } from "@/lib/image-utils";
 
 import { FilterSection } from "./FilterSection";
 import { OrderSection } from "./OrderSection";
@@ -74,9 +74,7 @@ export function ProductList() {
           <OrderSection />
         </div>
       </div>
-      <PromotionalImages
-        item={{ image: importImage("plp-ad.jpg"), link: "/" }}
-      />
+      <PromotionalImages item={{ image: getImgUrl("plp-ad.jpg"), link: "/" }} />
     </MainLayout>
   );
 }

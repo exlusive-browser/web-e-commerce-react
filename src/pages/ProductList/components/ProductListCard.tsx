@@ -1,4 +1,4 @@
-import { importImage } from "@/lib/image-utils";
+import { getImgUrl } from "@/lib/image-utils";
 import { StarsRating } from "./StarsRating";
 import cartIcon from "@/assets/plp/cart.svg";
 import { useState, useEffect } from "react";
@@ -42,21 +42,29 @@ export const ProductListCard: React.FC<ProductListProps> = ({ products }) => {
           };
         }, []);
 
-        const fixedDiscount = Math.abs(parseInt(product.discount.replace("%", ""), 10));
+        const fixedDiscount = Math.abs(
+          parseInt(product.discount.replace("%", ""), 10)
+        );
 
-        const fixedRating = Math.round(parseFloat(product.rating.split(" ")[0]));
+        const fixedRating = Math.round(
+          parseFloat(product.rating.split(" ")[0])
+        );
 
         return (
-          <Link to={`/products/${product.id}/${formatTitle(product.title)}`} key={index}>
-
+          <Link
+            to={`/products/${product.id}/${formatTitle(product.title)}`}
+            key={index}
+          >
             <div
               className="flex flex-col lg:flex-row w-full h-auto lg:h-80 max-w-5xl mb-10 cursor-pointer rounded-2xl overflow-hidden transition-transform transform lg:hover:scale-105 shadow-md"
-              onMouseEnter={() => isLgScreen && setCurrentImage(product.hoverImage)}
-              onMouseLeave={() => isLgScreen && setCurrentImage(product.image)}>
+              onMouseEnter={() =>
+                isLgScreen && setCurrentImage(product.hoverImage)
+              }
+              onMouseLeave={() => isLgScreen && setCurrentImage(product.image)}
+            >
               <div className="flex bg-white align-center justify-center md:w-[300px]  w-auto h-[300px] md:h-auto">
-
                 <img
-                  src={importImage(currentImage)}
+                  src={getImgUrl(currentImage)}
                   alt={product.title}
                   className=" object-contain h-full lg:h-full transition-opacity duration-500 ease-in-out"
                 />
@@ -108,11 +116,8 @@ export const ProductListCard: React.FC<ProductListProps> = ({ products }) => {
                     <p className="text-white">Add to cart</p>
                   </div>
                 </button>
-
               </div>
-
             </div>
-
           </Link>
         );
       })}
