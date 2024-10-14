@@ -11,6 +11,15 @@ export async function getProducts(): Promise<Product[]> {
   return response.data;
 }
 
+export async function getProductsByCategory(
+  category: string
+): Promise<Product[]> {
+  const response = await axiosClient.get<Product[]>(
+    `/products?category=${category}`
+  );
+  return response.data;
+}
+
 export async function getProductById(id: number): Promise<Product> {
   const response = await axiosClient.get<Product>(`/products/${id}`);
   const product = response.data; // Ahora es un objeto directamente
