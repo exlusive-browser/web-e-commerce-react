@@ -1,7 +1,7 @@
 import { LandingPage } from "@/pages/Landing/LandingPage";
 import { ProductList } from "@/pages/ProductList/ProductList";
 import { ProductDescription } from "@/pages/ProductDescriptionPage/ProductDescription";
-import { ProductListCart } from "@/pages/ShoppingCart/ProductListCart";
+import { ShoppingCartPage } from "@/pages/ShoppingCart/ProductListCart";
 import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
@@ -10,19 +10,16 @@ export const router = createBrowserRouter([
     element: <LandingPage />,
   },
   {
-    path: "/products",
-    element: <p>Product List Generic</p>,
-  },
-  {
-    path: "/products/category/:id",
+    path: "/categories/:id",
     element: <ProductList />,
   },
+  // TODO: remove :id from the path, only :title is enough
   {
     path: "/products/:id/:title",
     element: <ProductDescription />,
   },
   {
     path: "/shopping-cart",
-    element: <ProductListCart />,
+    element: <ShoppingCartPage />,
   },
 ]);
